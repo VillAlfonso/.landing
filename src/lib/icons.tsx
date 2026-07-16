@@ -1,4 +1,12 @@
-import { siClaude, siCloudflare, siJavascript, siPython } from "simple-icons";
+import {
+  siClaude,
+  siCloudflare,
+  siFastapi,
+  siFfmpeg,
+  siJavascript,
+  siOllama,
+  siPython,
+} from "simple-icons";
 import type { ReactNode } from "react";
 
 /**
@@ -7,6 +15,11 @@ import type { ReactNode } from "react";
  *  2. doodleIcons — hand-drawn ink fallbacks for brands simple-icons doesn't carry
  * StackIcon checks tier 1 first. When adding a new tool, try simple-icons first
  * (named export `si<Brandname>`), and only draw a doodle if it's missing.
+ *
+ * iconColors: the page itself is strictly black & white — the brand marks carry
+ * the ONLY color on the site, which is exactly why they pop. Use the official
+ * hex from simple-icons when available. Marks that are themselves black/white
+ * (ollama) get no entry and render in ink instead.
  */
 
 export const simpleIconPaths: Record<string, string> = {
@@ -14,6 +27,21 @@ export const simpleIconPaths: Record<string, string> = {
   python: siPython.path,
   javascript: siJavascript.path,
   cloudflare: siCloudflare.path,
+  fastapi: siFastapi.path,
+  ffmpeg: siFfmpeg.path,
+  ollama: siOllama.path,
+};
+
+export const iconColors: Record<string, string> = {
+  claude: `#${siClaude.hex}`,
+  python: `#${siPython.hex}`,
+  javascript: `#${siJavascript.hex}`,
+  cloudflare: `#${siCloudflare.hex}`,
+  fastapi: `#${siFastapi.hex}`,
+  ffmpeg: `#${siFfmpeg.hex}`,
+  comfyui: "#3b82f6",
+  aws: "#ff9900",
+  remotion: "#0b84f3",
 };
 
 export type DoodleIcon = (props: { className?: string }) => ReactNode;
@@ -53,19 +81,6 @@ export const doodleIcons: Record<string, DoodleIcon> = {
       <rect x="16" y="4" width="5" height="5" rx="0.8" />
       <path d="M3.5 15c4.8 4.4 12.2 4.4 17 .2" />
       <path d="M20.5 15.2l-3-.6M20.5 15.2l-1 2.8" />
-    </svg>
-  ),
-  claude: ({ className }) => (
-    <svg
-      viewBox="0 0 24 24"
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
-      <path d="M12 3v18M3 12h18M5.8 5.8l12.4 12.4M18.2 5.8L5.8 18.2" />
     </svg>
   ),
   remotion: ({ className }) => (

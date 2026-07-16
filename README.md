@@ -26,7 +26,9 @@ and the auto-derived toolbox.
 
 ## Design system
 
-- Paper `#f6f5f0` / ink `#17150f`, inverted in dark mode. No other colors.
+- Paper `#f6f5f0` / ink `#17150f`, inverted in dark mode. Page chrome carries
+  no other color — the brand logos (via `iconColors` in `src/lib/icons.tsx`)
+  are the only colored thing on the site, which is why they pop.
 - Anton (display) · IBM Plex Mono (body) · Caveat (margin scribbles).
 - Faint asymmetric grid, spiral binding, margin rule: `src/components/NotebookBackground.tsx` and `BindingStrip.tsx`.
 - Hero zero-gravity logo field: `src/components/Hero.tsx` (`LOGO_SLOTS`).

@@ -13,7 +13,7 @@ export default function Home() {
     <div>
       <Hero />
 
-      <section className="relative z-10 mx-auto mt-4 w-full max-w-6xl px-5 md:px-10">
+      <section className="relative z-10 mx-auto mt-6 w-full max-w-6xl px-5 md:px-10">
         <Reveal>
           <SectionHeader title="featured work" note="the good stuff" />
         </Reveal>
@@ -35,7 +35,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      <section className="relative z-10 mx-auto mt-28 w-full max-w-6xl px-5 md:px-10">
+      <section className="relative z-10 mx-auto mt-24 w-full max-w-6xl px-5 md:px-10">
         <Reveal className="relative">
           <p className="-rotate-1 font-hand text-xl text-ink/50">
             got something weird to build?

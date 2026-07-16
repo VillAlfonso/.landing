@@ -1,6 +1,12 @@
 "use client";
 
-import { useRef, type CSSProperties, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import {
   motion,
   useReducedMotion,
@@ -17,10 +23,12 @@ import Scribble from "./Scribble";
 import { ArrowDownDoodle, AxesDoodle } from "./doodles";
 
 /**
- * Zero-gravity banner. Each stack logo gets a slot: position (% of hero),
- * size (px), depth (0–1, closer = bigger/darker/faster parallax), spin
- * factor and idle-drift duration. Slots beyond the stack length are spares —
- * new stack entries pick up the next free slot automatically.
+ * Zero-gravity banner around a centered identity block. Each stack logo gets
+ * a slot: position (% of hero), size (px), depth (0–1: closer = bigger,
+ * more opaque, faster parallax), spin factor and idle-drift duration.
+ * Slots ring the center — keep x 32–68 / y 20–80 clear for the name & portrait.
+ * Slots beyond the stack length are spares; new stack entries pick up the
+ * next free slot automatically.
  */
 type Slot = {
   x: number;
@@ -29,29 +37,31 @@ type Slot = {
   d: number;
   r: number;
   dur: number;
+  /** optional y override on small screens, to clear the centered text band */
+  sy?: number;
 };
 
 const LOGO_SLOTS: Slot[] = [
-  { x: 56, y: 7, s: 54, d: 0.95, r: 1.2, dur: 7.5 },
-  { x: 12, y: 15, s: 46, d: 0.6, r: -0.9, dur: 8.5 },
-  { x: 86, y: 38, s: 64, d: 1.0, r: 0.7, dur: 6.5 },
-  { x: 30, y: 7, s: 36, d: 0.45, r: -1.4, dur: 9.1 },
-  { x: 49, y: 34, s: 34, d: 0.4, r: 1.6, dur: 8.2 },
-  { x: 5, y: 44, s: 52, d: 0.8, r: -0.6, dur: 7.1 },
-  { x: 65, y: 54, s: 48, d: 0.7, r: 1.0, dur: 9.4 },
+  { x: 74, y: 12, s: 78, d: 0.95, r: 1.2, dur: 7.5 },
+  { x: 12, y: 16, s: 64, d: 0.6, r: -0.9, dur: 8.5 },
+  { x: 84, y: 56, s: 92, d: 1.0, r: 0.7, dur: 6.5, sy: 72 },
+  { x: 20, y: 68, s: 56, d: 0.45, r: -1.4, dur: 9.1 },
+  { x: 6, y: 40, s: 52, d: 0.4, r: 1.6, dur: 8.2 },
+  { x: 88, y: 32, s: 76, d: 0.8, r: -0.6, dur: 7.1 },
+  { x: 15, y: 85, s: 72, d: 0.7, r: 1.0, dur: 9.4 },
+  { x: 77, y: 79, s: 60, d: 0.55, r: 1.3, dur: 7.8, sy: 88 },
+  { x: 4, y: 60, s: 48, d: 0.5, r: -0.8, dur: 8.8, sy: 74 },
+  { x: 90, y: 7, s: 44, d: 0.35, r: -1.1, dur: 8.4 },
   // spares — used automatically as the stack grows
-  { x: 90, y: 8, s: 30, d: 0.3, r: 1.3, dur: 7.8 },
-  { x: 22, y: 33, s: 32, d: 0.5, r: -0.8, dur: 8.8 },
-  { x: 48, y: 55, s: 30, d: 0.35, r: -1.1, dur: 8.4 },
-  { x: 76, y: 74, s: 38, d: 0.55, r: 0.9, dur: 7.3 },
-  { x: 8, y: 72, s: 32, d: 0.4, r: -1.2, dur: 9.6 },
+  { x: 66, y: 90, s: 46, d: 0.55, r: 0.9, dur: 7.3 },
+  { x: 30, y: 6, s: 48, d: 0.4, r: -1.2, dur: 9.6 },
 ];
 
 const GLYPHS = [
-  { ch: "∑", x: 34, y: 56, size: 26, d: 0.3, r: 0.5, rot: -10, dur: 9 },
-  { ch: "π", x: 93, y: 64, size: 30, d: 0.35, r: -0.4, rot: 8, dur: 8 },
-  { ch: "∫", x: 3, y: 30, size: 34, d: 0.25, r: 0.4, rot: -6, dur: 10 },
-  { ch: "√2", x: 60, y: 34, size: 20, d: 0.2, r: -0.5, rot: 12, dur: 9.5 },
+  { ch: "∑", x: 26, y: 30, size: 26, d: 0.3, r: 0.5, rot: -10, dur: 9 },
+  { ch: "π", x: 94, y: 72, size: 30, d: 0.35, r: -0.4, rot: 8, dur: 8 },
+  { ch: "∫", x: 3, y: 20, size: 34, d: 0.25, r: 0.4, rot: -6, dur: 10 },
+  { ch: "√2", x: 69, y: 66, size: 20, d: 0.2, r: -0.5, rot: 12, dur: 9.5 },
 ];
 
 function FieldItem({
@@ -123,6 +133,15 @@ function FieldItem({
 export default function Hero() {
   const ref = useRef<HTMLElement | null>(null);
   const reduce = useReducedMotion() ?? false;
+  const [small, setSmall] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 639px)");
+    const onChange = () => setSmall(mq.matches);
+    onChange();
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -130,27 +149,28 @@ export default function Hero() {
   // the spring is what makes the exit poppy — it overshoots a little
   const p = useSpring(scrollYProgress, { stiffness: 100, damping: 22, mass: 0.8 });
 
-  const titleY = useTransform(p, [0, 1], [0, 110]);
-  const titleOpacity = useTransform(p, [0, 0.6, 0.92], [1, 1, 0]);
+  const titleY = useTransform(p, [0, 1], [0, 120]);
+  const titleOpacity = useTransform(p, [0, 0.55, 0.9], [1, 1, 0]);
   const cueOpacity = useTransform(p, [0, 0.12], [1, 0]);
 
   return (
-    <section ref={ref} className="relative h-[100svh] min-h-[600px]">
-      {/* floating monochrome logo field */}
+    <section ref={ref} className="relative h-[100svh] min-h-[640px]">
+      {/* floating brand-colored logo field — the only color on the page */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
         {stack.map((item, i) => {
-          const slot = LOGO_SLOTS[i % LOGO_SLOTS.length];
+          const base = LOGO_SLOTS[i % LOGO_SLOTS.length];
+          const slot =
+            small && base.sy !== undefined ? { ...base, y: base.sy } : base;
           return (
             <FieldItem key={item.id} slot={slot} i={i} p={p} reduce={reduce}>
               <div
-                className="pointer-events-auto text-ink"
+                className="pointer-events-auto aspect-square"
                 style={{
-                  width: slot.s,
-                  height: slot.s,
-                  opacity: 0.3 + slot.d * 0.7,
+                  width: `min(${slot.s}px, ${Math.round(slot.s * 0.62)}px + 2.6vw)`,
+                  opacity: 0.45 + slot.d * 0.55,
                   filter: slot.d < 0.5 ? "blur(0.6px)" : undefined,
                 }}
               >
@@ -182,46 +202,36 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* the portrait — taped to the sheet, deliberately not floating */}
-      <motion.div
-        className="absolute left-[64%] top-[12%] z-10 sm:left-[68%]"
-        initial={reduce ? false : { opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
-      >
-        <StickerPortrait className="w-28 rotate-3 sm:w-36 md:w-44" />
-      </motion.div>
-
       {/* faint margin noise — not meant to be noticed */}
-      <Scribble className="right-[7%] top-[68%] hidden -rotate-6 text-[19px] opacity-[0.11] md:block">
+      <Scribble className="right-[5%] top-[76%] hidden -rotate-6 text-[19px] opacity-[0.11] md:block">
         b. 2004
       </Scribble>
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-[26%] top-[40%] hidden -rotate-3 opacity-[0.07] lg:block"
+        className="pointer-events-none absolute left-[11%] top-[27%] hidden -rotate-3 opacity-[0.07] lg:block"
       >
         <AxesDoodle className="h-24 w-32 text-ink" />
       </div>
 
-      {/* name */}
-      <div className="absolute inset-x-0 bottom-0 z-10">
+      {/* centered identity block: the profile pic is just the profile pic */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
         <motion.div
           style={reduce ? undefined : { y: titleY, opacity: titleOpacity }}
-          className="mx-auto w-full max-w-6xl px-5 pb-12 md:px-10 md:pb-14"
+          className="flex flex-col items-center px-5 text-center"
         >
-          <p className="mb-3 ml-1 -rotate-2 font-hand text-2xl text-ink/60 md:text-3xl">
+          <StickerPortrait className="w-32 -rotate-2 sm:w-40 md:w-44" />
+          <p className="mt-7 -rotate-2 font-hand text-2xl text-ink/60 md:text-3xl">
             hi, i'm
           </p>
-          <h1 className="font-display text-[clamp(4rem,15vw,11.5rem)] uppercase leading-[0.84] tracking-[0.01em]">
+          <h1 className="mt-1 font-display text-[clamp(3.4rem,12.5vw,10rem)] uppercase leading-[0.9] tracking-[0.01em]">
             {profile.name}
           </h1>
           <p className="mt-4 text-[13px] leading-relaxed text-ink/60 md:text-sm">
             {profile.tagline} — portfolio no.01
-            <span className="mx-3 hidden h-px w-8 bg-ink/25 align-middle sm:inline-block" />
-            <span className="mt-1 flex items-center gap-2 text-ink/80 sm:mt-0 sm:inline-flex">
-              <span className="inline-block h-[7px] w-[7px] rounded-full bg-ink" />
-              {profile.status}
-            </span>
+          </p>
+          <p className="mt-2 flex items-center gap-2 text-[13px] text-ink/80 md:text-sm">
+            <span className="inline-block h-[7px] w-[7px] rounded-full bg-ink" />
+            {profile.status}
           </p>
         </motion.div>
       </div>
@@ -229,7 +239,7 @@ export default function Hero() {
       {/* scroll cue */}
       <motion.div
         style={reduce ? undefined : { opacity: cueOpacity }}
-        className="absolute bottom-6 right-5 z-10 hidden flex-col items-center gap-0.5 text-ink/50 sm:flex md:right-10"
+        className="absolute bottom-7 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-0.5 text-ink/50 sm:flex"
       >
         <span className="-rotate-6 font-hand text-lg">scroll</span>
         <ArrowDownDoodle className="h-9 w-5" />
