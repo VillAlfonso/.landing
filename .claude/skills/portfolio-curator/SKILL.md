@@ -32,8 +32,19 @@ The kit at `C:\.showcase-kit` turns codebases into showcase entries
   `showcase/showcase.json` in its repo or `C:\.showcase-kit\examples\<slug>\`):
   source name, year, tech[], and description raw material from it — don't
   re-interview the user. Keep the portfolio row short; the showcase page holds
-  the deep dive. For `href` prefer, in order: deployed showcase detail page →
-  repo link → published demo/video (from its `links[]`).
+  the deep dive.
+- **The showcase site lives INSIDE this repo** at `public/showcase/`
+  (self-contained `index.html` + `media/<slug>/`). Rebuild it after any
+  showcase.json change:
+
+  ```bash
+  python C:\.showcase-kit\build_site.py --projects C:\.showcase-kit\examples --out C:\.landing\public\showcase
+  ```
+
+  Owner info comes from `C:\.showcase-kit\examples\portfolio.json`. Point each
+  project row's `href` at its detail page: `/showcase/index.html#/p/<slug>`
+  (fall back to repo link → published demo/video from its `links[]` if the
+  project has no showcase entry).
 - **Creating a showcase entry for a new codebase**: copy
   `C:\.showcase-kit\.claude\skills\showcase\` into that repo's `.claude/skills/`
   and follow it there (probe.py → study → playwright captures → showcase.json;

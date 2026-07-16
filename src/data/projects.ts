@@ -40,7 +40,8 @@ export const projects: Project[] = [
       "ffmpeg",
       "ollama",
     ],
-    href: "https://github.com/VillAlfonso/AAAFlow",
+    // in-site showcase page (public/showcase, built by showcase-kit)
+    href: "/showcase/index.html#/p/aaaflow",
     featured: true,
   },
   {
