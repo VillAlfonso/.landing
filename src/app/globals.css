@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --paper: #f6f5f0;
+  --ink: #17150f;
+  --grid-line: rgba(23, 21, 15, 0.05);
+  --grid-strong: rgba(23, 21, 15, 0.09);
+  --margin-line: rgba(23, 21, 15, 0.14);
+  --tape: rgba(23, 21, 15, 0.08);
+}
+
+.dark {
+  --paper: #121110;
+  --ink: #eae8df;
+  --grid-line: rgba(234, 232, 223, 0.045);
+  --grid-strong: rgba(234, 232, 223, 0.08);
+  --margin-line: rgba(234, 232, 223, 0.13);
+  --tape: rgba(234, 232, 223, 0.09);
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --font-display: var(--font-anton);
+  --font-mono: var(--font-plex-mono);
+  --font-hand: var(--font-caveat);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* zero-gravity idle drift for the hero logo field */
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(-5px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(6px) rotate(2.5deg);
+  }
+}
+
+.bob {
+  animation: bob var(--bob-dur, 7s) ease-in-out infinite;
+  animation-delay: var(--bob-delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bob {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
