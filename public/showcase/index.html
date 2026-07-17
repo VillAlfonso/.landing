@@ -3,131 +3,233 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>Reblobler - Projects</title>
+<link rel="icon" type="image/png" href="/icon.png">
+<!-- no-flash theme init: shares localStorage.theme + the .dark class with the main portfolio -->
+<script>(function(){try{var s=localStorage.getItem("theme");var d=s?s==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.classList.toggle("dark",d);}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ---------- notebook theme tokens (mirrors the main site's globals.css) ---------- */
 :root{
-  --accent:#6a5cff;
-  --bg:#0d0f14; --card:#151924; --line:#232a3a; --fg:#e9ebf2; --muted:#96a0b5; --chip:#1d2331;
-  --radius:16px; --maxw:1120px;
-  --shadow:0 1px 0 rgba(255,255,255,.03),0 14px 34px -14px rgba(0,0,0,.65);
-  --serif:ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --paper:#f6f5f0; --ink:#17150f;
+  --grid-line:rgba(23,21,15,.05); --grid-strong:rgba(23,21,15,.09);
+  --margin-line:rgba(23,21,15,.14); --tape:rgba(23,21,15,.08);
 }
-@media (prefers-color-scheme: light){
-  :root{ --bg:#f7f7f9; --card:#fff; --line:#e5e7ee; --fg:#14171f; --muted:#5a6274; --chip:#eef0f6;
-  --shadow:0 1px 2px rgba(20,24,40,.06),0 18px 40px -20px rgba(20,24,40,.20); }
+html.dark{
+  --paper:#121110; --ink:#eae8df;
+  --grid-line:rgba(234,232,223,.045); --grid-strong:rgba(234,232,223,.08);
+  --margin-line:rgba(234,232,223,.13); --tape:rgba(234,232,223,.09);
 }
-:root[data-theme="dark"]{ --bg:#0d0f14; --card:#151924; --line:#232a3a; --fg:#e9ebf2; --muted:#96a0b5; --chip:#1d2331; --shadow:0 1px 0 rgba(255,255,255,.03),0 14px 34px -14px rgba(0,0,0,.65); }
-:root[data-theme="light"]{ --bg:#f7f7f9; --card:#fff; --line:#e5e7ee; --fg:#14171f; --muted:#5a6274; --chip:#eef0f6; --shadow:0 1px 2px rgba(20,24,40,.06),0 18px 40px -20px rgba(20,24,40,.20); }
+/* derived ink alphas — lazily resolve var(--ink), so they follow the theme */
+:root{
+  --ink-90:color-mix(in srgb,var(--ink) 90%,transparent);
+  --ink-70:color-mix(in srgb,var(--ink) 70%,transparent);
+  --ink-60:color-mix(in srgb,var(--ink) 60%,transparent);
+  --ink-45:color-mix(in srgb,var(--ink) 45%,transparent);
+  --ink-35:color-mix(in srgb,var(--ink) 35%,transparent);
+  --ink-30:color-mix(in srgb,var(--ink) 30%,transparent);
+  --ink-20:color-mix(in srgb,var(--ink) 20%,transparent);
+  --ink-12:color-mix(in srgb,var(--ink) 12%,transparent);
+  --ink-06:color-mix(in srgb,var(--ink) 6%,transparent);
+  --maxw:1120px;
+  --display:"Anton","Arial Narrow",Impact,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --hand:"Caveat","Segoe Script",cursive;
+}
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--bg); color:var(--fg); font:16px/1.62 var(--sans); -webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(1100px 460px at 18% -6%, color-mix(in oklab,var(--accent) 13%,transparent), transparent 62%);
-  background-repeat:no-repeat}
-.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
-.top{position:sticky; top:0; z-index:20; backdrop-filter:blur(12px); background:color-mix(in oklab,var(--bg) 78%,transparent); border-bottom:1px solid var(--line)}
-.top .wrap{display:flex; align-items:center; gap:14px; height:58px}
-.brand{font-weight:700; letter-spacing:-.01em; cursor:pointer; background:none; border:0; color:inherit; font-size:15.5px; padding:0; font-family:var(--serif)}
-.brand em{color:var(--accent); font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper); color:var(--ink);
+  font:13.5px/1.62 var(--mono); -webkit-font-smoothing:antialiased;
+  transition:background-color .25s ease,color .25s ease;
+}
+::selection{background:var(--ink); color:var(--paper)}
+:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
+a{color:inherit}
+img,video{max-width:100%}
+
+/* ---------- squared-paper sheet + margin rule ---------- */
+.sheet{
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background-image:
+    linear-gradient(to right, var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size:104px 104px,130px 130px,26px 26px,26px 26px;
+  background-position:78px 0,0 104px,0 0,0 0;
+}
+.sheet .margin{position:absolute; top:0; bottom:0; width:1px; background:var(--margin-line)}
+.sheet .m1{left:38px} .sheet .m2{left:42px; opacity:.6}
+@media(min-width:768px){ .sheet .m1{left:64px} .sheet .m2{left:68px} }
+
+/* ---------- spiral binding along the top edge ---------- */
+.binding{position:absolute; inset-inline:0; top:10px; z-index:5; display:flex; justify-content:center; gap:17px; overflow:hidden; opacity:.7; pointer-events:none}
+.binding span{position:relative; display:block; width:9px; height:9px; flex:0 0 auto; border-radius:50%; border:1px solid var(--ink-30); background:var(--paper)}
+.binding span::before{content:""; position:absolute; left:50%; top:-9px; width:1px; height:8px; transform:translateX(-50%); background:var(--ink-20)}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+@media(min-width:768px){ .wrap{padding:0 40px} }
+
+/* ---------- top bar (mirrors the main site's Nav) ---------- */
+.top{position:relative; z-index:10}
+.top .wrap{display:flex; align-items:center; gap:14px; height:74px; padding-top:24px}
+.brand{display:inline-flex; align-items:center; gap:7px; background:none; border:0; padding:0; cursor:pointer; color:inherit;
+  font-family:var(--mono); font-weight:600; font-size:13px; text-transform:lowercase; letter-spacing:-.01em}
+.brand .star{width:12px; height:12px; color:var(--ink-70); transition:transform .3s ease}
+.brand:hover .star{transform:rotate(90deg)}
 .spacer{flex:1}
-.tbtn{border:1px solid var(--line); background:var(--card); color:var(--muted); border-radius:10px; padding:7px 11px; font-size:13px; cursor:pointer}
-.tbtn:hover{color:var(--fg); border-color:color-mix(in oklab,var(--accent) 45%,var(--line))}
+.tbtn{display:inline-grid; place-items:center; width:30px; height:30px; border:0; background:none; cursor:pointer; color:var(--ink-60); transition:color .3s ease,transform .3s ease}
+.tbtn:hover{color:var(--ink)}
+html.dark .tbtn svg{transform:rotate(180deg)}
+
+main.wrap{position:relative; z-index:1}
+
+/* ---------- shared bits ---------- */
+.eyebrow{font-family:var(--mono); font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:.16em; color:var(--ink-45)}
+.hand{font-family:var(--hand); color:var(--ink-45)}
+.squig{position:absolute; left:0; bottom:-9px; width:100%; height:8px; color:var(--ink-45); overflow:visible}
+h1,h2,h3{font-family:var(--display); font-weight:400; text-transform:uppercase; letter-spacing:.01em; line-height:1.02; margin:0}
+.chips{display:flex; gap:6px; flex-wrap:wrap}
+.chip{font-family:var(--mono); font-size:10.5px; line-height:1; text-transform:lowercase; color:var(--ink-70);
+  border:1px solid var(--ink-20); border-radius:4px; padding:5px 8px; white-space:nowrap}
+
 /* ---------- landing ---------- */
-.hero{padding:76px 0 30px}
-.eyebrow{color:var(--accent); font-weight:600; letter-spacing:.16em; text-transform:uppercase; font-size:11.5px}
-.hero h1{font-family:var(--serif); font-weight:600; font-size:clamp(34px,5.4vw,58px); line-height:1.03; letter-spacing:-.015em; margin:.3em 0 .22em}
-.hero .bio{color:var(--muted); font-size:clamp(15px,2vw,18.5px); max-width:60ch; margin:0}
-.owner-links{display:flex; gap:10px; flex-wrap:wrap; margin-top:22px}
-.owner-links a{font-size:13.5px; color:var(--muted); text-decoration:none; border:1px solid var(--line); padding:7px 14px; border-radius:999px; background:var(--card)}
-.owner-links a:hover{color:var(--fg); border-color:var(--accent)}
-.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; padding:18px 0 80px}
-.card{position:relative; border:1px solid var(--line); background:var(--card); border-radius:var(--radius); overflow:hidden; cursor:pointer; text-align:left; color:inherit; font:inherit; padding:0; box-shadow:var(--shadow); transition:transform .18s ease,border-color .18s ease}
-.card:hover{transform:translateY(-4px); border-color:color-mix(in oklab,var(--accent) 60%,var(--line))}
+.hero{padding:52px 0 26px}
+.hero h1{position:relative; display:inline-block; font-size:clamp(40px,7vw,74px); margin:.12em 0 .28em}
+.hero .bio{color:var(--ink-60); font-size:clamp(13px,1.7vw,15px); max-width:58ch; margin:0}
+.owner-links{display:flex; gap:9px; flex-wrap:wrap; margin-top:22px}
+.owner-links a{font-family:var(--mono); font-size:12px; color:var(--ink-60); text-decoration:none; border:1px solid var(--ink-20); padding:7px 13px; border-radius:999px; transition:color .18s ease,border-color .18s ease}
+.owner-links a:hover{color:var(--ink); border-color:var(--ink-45)}
+
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; padding:20px 0 60px}
+.card{position:relative; display:block; width:100%; text-align:left; cursor:pointer; color:inherit; font:inherit;
+  border:1px solid var(--ink-12); background:var(--paper); border-radius:7px; overflow:hidden; padding:0;
+  transition:transform .18s ease,border-color .18s ease}
+.card:hover{transform:translateY(-3px); border-color:var(--ink-30)}
 .card.featured{grid-column:span 2}
 @media(max-width:700px){ .card.featured{grid-column:span 1} }
-.thumb{aspect-ratio:16/9; background:linear-gradient(135deg,color-mix(in oklab,var(--accent) 26%,var(--card)),var(--card)); display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative}
+.idx{position:absolute; top:8px; left:11px; z-index:2; font-family:var(--hand); font-size:19px; color:var(--paper);
+  text-shadow:0 1px 3px rgba(0,0,0,.55); mix-blend-mode:normal}
+.thumb{aspect-ratio:16/9; background:var(--ink-06); display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; border-bottom:1px solid var(--ink-12)}
 .thumb img,.thumb video{width:100%; height:100%; object-fit:cover; display:block}
-.thumb .ph{font-size:34px; color:var(--accent); opacity:.5}
-.thumb .live{position:absolute; right:10px; bottom:10px; font-size:10.5px; letter-spacing:.08em; color:#fff; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.25); padding:3px 8px; border-radius:999px; opacity:0; transition:opacity .15s}
+.thumb .ph{font-family:var(--display); font-size:30px; color:var(--ink-20)}
+.thumb .live{position:absolute; right:10px; bottom:10px; font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:lowercase;
+  color:#fff; background:rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.3); padding:3px 8px; border-radius:999px; opacity:0; transition:opacity .15s}
 .card:hover .live{opacity:1}
-.card-body{padding:17px 17px 19px}
-.card-body h3{margin:0 0 5px; font-size:19px; letter-spacing:-.01em; font-family:var(--serif); font-weight:600}
-.card.featured .card-body h3{font-size:23px}
-.card-body .tl{color:var(--muted); font-size:14px; margin:0 0 13px}
-.chips{display:flex; gap:6px; flex-wrap:wrap}
-.chip{font-size:11.5px; color:var(--muted); background:var(--chip); border:1px solid var(--line); padding:3px 9px; border-radius:999px; white-space:nowrap}
-.rowmeta{display:flex; gap:8px; align-items:center; margin-top:13px; color:var(--muted); font-size:12px}
+.card-body{padding:15px 16px 17px}
+.card-body h3{position:relative; display:inline-block; font-size:20px; margin:0 0 7px}
+.card.featured .card-body h3{font-size:25px}
+.card:hover .card-body h3 .squig{color:var(--ink-70)}
+.card-body .tl{color:var(--ink-60); font-size:12.5px; margin:0 0 12px; line-height:1.55}
+.rowmeta{display:flex; gap:7px; align-items:center; margin-top:12px; color:var(--ink-45); font-size:11px}
 .rowmeta .st{text-transform:capitalize}
-.dot{width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent)}
+.dot{width:5px; height:5px; border-radius:50%; background:var(--ink-45)}
+
 /* ---------- detail ---------- */
-.detail{padding:24px 0 90px; animation:fade .28s ease}
+.detail{padding:22px 0 80px; animation:fade .28s ease}
 @keyframes fade{from{opacity:0; transform:translateY(7px)} to{opacity:1; transform:none}}
-.back{background:none; border:0; color:var(--muted); cursor:pointer; font:inherit; font-size:14px; padding:6px 0; margin-bottom:12px}
-.back:hover{color:var(--fg)}
-.herobanner{aspect-ratio:16/9; border:1px solid var(--line); border-radius:18px; overflow:hidden; margin:0 0 26px; background:#000; box-shadow:var(--shadow)}
+.back{background:none; border:0; color:var(--ink-45); cursor:pointer; font-family:var(--mono); font-size:12.5px; padding:6px 0; margin-bottom:14px; transition:color .18s ease}
+.back:hover{color:var(--ink)}
+.herobanner{aspect-ratio:16/9; border:1px solid var(--ink-20); border-radius:10px; overflow:hidden; margin:0 0 26px; background:var(--ink-06)}
 .herobanner video,.herobanner img{width:100%; height:100%; object-fit:cover; display:block}
-.dhead h1{font-family:var(--serif); font-weight:600; font-size:clamp(30px,4.4vw,46px); letter-spacing:-.015em; margin:.16em 0 .14em}
-.dhead .tl{color:var(--muted); font-size:18px; margin:0 0 16px; max-width:64ch}
-.badges{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:0 0 18px}
-.madewith{display:inline-flex; align-items:center; gap:7px; font-size:13px; color:var(--muted); border:1px solid color-mix(in oklab,var(--accent) 40%,var(--line)); background:color-mix(in oklab,var(--accent) 8%,var(--card)); padding:6px 13px; border-radius:999px}
-.madewith b{color:var(--accent); font-weight:650}
-.dlinks{display:flex; gap:10px; flex-wrap:wrap; margin:2px 0 22px}
-.dlinks a{text-decoration:none; font-size:14px; padding:9px 16px; border-radius:11px; border:1px solid var(--line); background:var(--card); color:inherit}
-.dlinks a.primary{background:var(--accent); color:#fff; border-color:transparent; box-shadow:0 6px 18px -8px var(--accent)}
-.dlinks a:hover{border-color:var(--accent)}
-.note{border:1px solid color-mix(in oklab,var(--accent) 40%,var(--line)); background:color-mix(in oklab,var(--accent) 9%,var(--card)); border-radius:14px; padding:16px 19px; margin:0 0 30px; font-size:15.5px}
+.dhead h1{position:relative; display:inline-block; font-size:clamp(34px,5vw,54px); margin:.14em 0 .2em}
+.dhead .tl{color:var(--ink-60); font-size:16px; margin:0 0 16px; max-width:64ch; line-height:1.55}
+.badges{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:0 0 16px}
+.madewith{display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:12px; color:var(--ink-60);
+  border:1px solid var(--ink-20); background:var(--ink-06); padding:6px 12px; border-radius:999px}
+.madewith b{color:var(--ink); font-weight:600}
+.dlinks{display:flex; gap:9px; flex-wrap:wrap; margin:2px 0 24px}
+.dlinks a{font-family:var(--mono); text-decoration:none; font-size:12.5px; padding:9px 15px; border-radius:8px; border:1px solid var(--ink-20); color:var(--ink-70); transition:border-color .18s ease,color .18s ease}
+.dlinks a:hover{border-color:var(--ink-45); color:var(--ink)}
+.dlinks a.primary{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+.dlinks a.primary:hover{color:var(--paper)}
+.note{border:1px solid var(--ink-12); background:var(--ink-06); border-radius:9px; padding:15px 18px; margin:0 0 30px; font-size:13.5px; color:var(--ink-70)}
 .note p{margin:0 0 8px} .note p:last-child{margin:0}
-.g-head{font-family:var(--serif); font-weight:600; font-size:19px; letter-spacing:-.01em; margin:34px 0 14px; display:flex; align-items:baseline; gap:10px}
-.g-head::after{content:""; flex:1; height:1px; background:var(--line)}
+
+.g-head{position:relative; font-family:var(--display); font-size:18px; text-transform:uppercase; letter-spacing:.02em; margin:36px 0 15px; display:flex; align-items:center; gap:12px; color:var(--ink)}
+.g-head::after{content:""; flex:1; height:1px; background:var(--ink-12)}
 .gallery{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:16px}
 figure{margin:0}
-figcaption{color:var(--muted); font-size:12.5px; margin-top:8px; line-height:1.5}
-.gallery video.vid{width:100%; aspect-ratio:16/10; border:1px solid var(--line); border-radius:13px; background:#000; display:block; object-fit:cover}
-.shot{aspect-ratio:16/10; border:1px solid var(--line); border-radius:13px; overflow:hidden; background:linear-gradient(135deg,color-mix(in oklab,var(--accent) 20%,var(--card)),var(--card)); display:flex; align-items:flex-end; position:relative}
+figcaption{color:var(--ink-45); font-size:11.5px; margin-top:8px; line-height:1.5}
+.gallery video.vid{width:100%; aspect-ratio:16/10; border:1px solid var(--ink-20); border-radius:9px; background:var(--ink-06); display:block; object-fit:cover}
+.shot{aspect-ratio:16/10; border:1px solid var(--ink-20); border-radius:9px; overflow:hidden; background:var(--ink-06); display:flex; align-items:flex-end; position:relative}
 .shot.has{cursor:zoom-in}
 .shot img{width:100%; height:100%; object-fit:cover; display:block}
-.shot .cap{position:relative; z-index:1; padding:10px 12px; font-size:12.5px; color:var(--muted)}
+.shot .cap{position:relative; z-index:1; padding:10px 12px; font-size:11.5px; color:var(--ink-45)}
 .shot.has .cap{display:none}
-.cols{display:grid; grid-template-columns:1fr; gap:38px; margin-top:38px}
+
+.cols{display:grid; grid-template-columns:1fr; gap:34px; margin-top:38px}
 @media(min-width:840px){ .cols{grid-template-columns:1.55fr .95fr} }
-.sec{margin-bottom:32px}
-.sec h2{font-size:12px; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin:0 0 12px; font-weight:650}
-.sec p{margin:0 0 11px}
+.sec{margin-bottom:30px}
+.sec h2{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--ink-45); margin:0 0 11px; font-weight:600}
+.sec p{margin:0 0 11px; color:var(--ink-70)}
 .hl{list-style:none; padding:0; margin:0; display:grid; gap:11px}
-.hl li{padding-left:24px; position:relative}
-.hl li::before{content:"\2192"; position:absolute; left:0; color:var(--accent)}
-.metrics{display:grid; grid-template-columns:repeat(auto-fill,minmax(124px,1fr)); gap:12px}
-.metric{border:1px solid var(--line); background:var(--card); border-radius:13px; padding:14px 14px 12px}
-.metric .v{font-size:22px; font-weight:700; letter-spacing:-.01em; color:var(--accent); font-family:var(--serif)}
-.metric .l{font-size:11.5px; color:var(--muted); margin-top:3px; line-height:1.35}
-.lb{position:fixed; inset:0; background:rgba(4,5,8,.9); display:none; align-items:center; justify-content:center; z-index:50; padding:30px; cursor:zoom-out; flex-direction:column; gap:12px}
+.hl li{padding-left:22px; position:relative; color:var(--ink-70)}
+.hl li::before{content:"\2192"; position:absolute; left:0; color:var(--ink-45)}
+.metrics{display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:11px}
+.metric{border:1px solid var(--ink-12); background:var(--ink-06); border-radius:9px; padding:13px 13px 11px}
+.metric .v{font-family:var(--display); font-size:24px; letter-spacing:.01em; color:var(--ink)}
+.metric .l{font-size:10.5px; color:var(--ink-45); margin-top:4px; line-height:1.35}
+
+/* ---------- lightbox ---------- */
+.lb{position:fixed; inset:0; background:rgba(8,7,6,.9); display:none; align-items:center; justify-content:center; z-index:50; padding:30px; cursor:zoom-out; flex-direction:column; gap:12px}
 .lb.open{display:flex}
-.lb img{max-width:100%; max-height:88vh; border-radius:10px}
-.lb .lbcap{color:#c9cfdd; font-size:13.5px; max-width:80ch; text-align:center}
-footer{border-top:1px solid var(--line); color:var(--muted); font-size:13px}
-footer .wrap{padding:24px; display:flex; gap:8px; flex-wrap:wrap}
-@media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
+.lb img{max-width:100%; max-height:86vh; border-radius:8px}
+.lb .lbcap{color:#e8e6dd; font-family:var(--mono); font-size:12.5px; max-width:80ch; text-align:center}
+
+/* ---------- footer ---------- */
+footer{position:relative; z-index:1; border-top:1px solid var(--ink-12); margin-top:24px}
+footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 24px; padding:22px 20px; color:var(--ink-45); font-size:11px}
+@media(min-width:768px){ footer .wrap{padding:22px 40px} }
+footer .fh{font-family:var(--hand); font-size:15px; color:var(--ink-35); transform:rotate(-2deg)}
+footer a{text-decoration:none; transition:color .18s ease}
+footer a:hover{color:var(--ink)}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important; transition:none!important}
+  html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
+<div class="sheet" aria-hidden="true"><span class="margin m1"></span><span class="margin m2"></span></div>
+<div class="binding" id="binding" aria-hidden="true"></div>
+
 <header class="top"><div class="wrap">
-  <button class="brand" onclick="location.hash='#/'">&#9670; <em id="brandName"></em></button>
+  <button class="brand" onclick="location.hash='#/'">
+    <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 6 4 9 10 10-6 1-9 4-10 10-1-6-4-9-10-10 6-1 9-4 10-10Z" fill="currentColor"/></svg>
+    <span id="brandName"></span>
+  </button>
   <div class="spacer"></div>
-  <button class="tbtn" id="themeBtn">&#9680; theme</button>
+  <button class="tbtn" id="themeBtn" aria-label="toggle theme">
+    <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true">
+      <circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M10 2.5a7.5 7.5 0 0 0 0 15Z" fill="currentColor"/>
+    </svg>
+  </button>
 </div></header>
+
 <main id="app" class="wrap"></main>
 <div class="lb" id="lb"><img alt=""><div class="lbcap" id="lbcap"></div></div>
 <footer><div class="wrap" id="foot"></div></footer>
 
-<script id="data" type="application/json">{"owner": {"name": "Reblobler", "role": "creative developer", "bio": "code, motion & machine-made pictures. b. 2004. i build things end to end — usually on one gpu and a lot of grid paper.", "accent": "#d97757", "links": [{"label": "← main portfolio", "url": "/"}, {"label": "GitHub", "url": "https://github.com/VillAlfonso"}, {"label": "Email", "url": "mailto:quertgamer@gmail.com"}]}, "projects": [{"slug": "aaaflow", "name": "AAAFlow Studio", "tagline": "Type a script in, a finished YouTube video comes out. Fully local, one GPU, zero cloud.", "made_with": "Claude Fable", "note": "Built end to end with Claude Fable. I used up my entire Claude Fable allowance on this one project, and this is what came out of it: a studio that runs a whole fleet of YouTube channels off one gaming GPU.", "summary": "AAAFlow is a local-first video studio that turns a written script, or just an idea, into a finished, human-looking YouTube video on a single machine: an RTX 5060 Ti with 16 GB of VRAM, no cloud calls at all. It runs a strict voice-first pipeline (the whole script is narrated in one take, and everything else is timed to that narration), and channels are a generative resource: describe a theme to the local LLM and the studio mints a whole new channel, identity, voice and all, then produces videos in that channel's own style on request. Four channels exist today. Six videos have been produced, about 25 minutes of finished footage across 370 composed scenes, from 3-minute stories to a 10-minute, 141-scene documentary, and two of them are public on YouTube right now. The bar is simple: if a viewer or a platform can tell it was AI-generated, that is a failure.", "problem": "Most AI video tools produce obvious, formulaic output and lean on the cloud. AAAFlow aims for the opposite: broadcast-quality, human-looking videos produced end to end on one consumer GPU, driven entirely by a script, with every stage tuned to remove the tells that give AI video away, and every published critique turned into a permanent system fix rather than a one-off patch.", "role": "Solo builder. Architecture, pipeline, model integration, and the full UI.", "status": "active", "year": 2026, "featured": true, "tech": ["Python", "FastAPI", "JavaScript", "ComfyUI", "Wan 2.2", "Qwen3-TTS", "krea2", "ACE-Step", "Remotion", "Whisper", "Real-ESRGAN", "ffmpeg", "Ollama"], "topics": ["Generative AI", "Local-first", "Video", "Automation"], "media": [{"type": "video", "src": "media/aaaflow/01-hub-brand.mp4", "poster": "media/aaaflow/01-hub-brand.png", "role": "hero", "caption": "Pressing 'Brand preview' on a channel card: the channel's whole identity, plus its edit & sound grammar, rendered from one fixed krea2 node graph"}, {"type": "image", "src": "media/aaaflow/pipeline-diagram.png", "group": "The architecture", "caption": "The whole machine: the nine-step production pipeline, and the learning loop that grows new channels from studied references"}, {"type": "video", "src": "media/aaaflow/02-autopilot.mp4", "poster": "media/aaaflow/02-autopilot.png", "group": "The app, driven live", "caption": "Typing an idea into Autopilot. From here the local LLM researches the story, writes the script in this channel's voice, and produces the whole video; we stop just short of pressing go"}, {"type": "video", "src": "media/aaaflow/03-script-voice.mp4", "poster": "media/aaaflow/03-script-voice.png", "group": "The app, driven live", "caption": "A real project's storyboard, then stepping into Voice: the one-take narration that every scene's timing is aligned to"}, {"type": "video", "src": "media/aaaflow/04-images-animate.mp4", "poster": "media/aaaflow/04-images-animate.png", "group": "The app, driven live", "caption": "The generated stills for every scene, then Animate: which scenes earned real Wan 2.2 motion clips"}, {"type": "video", "src": "media/aaaflow/05-edit-grammar.mp4", "poster": "media/aaaflow/05-edit-grammar.png", "group": "The app, driven live", "caption": "The Edit plan: every transition, sound cue and word-synced emphasis the auto-director chose, scene by scene, from the effects grammar"}, {"type": "video", "src": "media/aaaflow/06-preview-play.mp4", "poster": "media/aaaflow/06-preview-play.png", "group": "The app, driven live", "caption": "Pressing play on a finished render inside the studio. This 3-minute video was produced end to end by the pipeline"}, {"type": "video", "src": "media/aaaflow/07-publish-youtube.mp4", "poster": "media/aaaflow/07-publish-youtube.png", "group": "The app, driven live", "caption": "Publish for a live video: the SEO package, typeset thumbnail variants, Shorts cutter, and real YouTube upload rows with on-platform status"}, {"type": "video", "src": "media/aaaflow/08-settings-storage.mp4", "poster": "media/aaaflow/08-settings-storage.png", "group": "The app, driven live", "caption": "Settings: the editable effects-grammar dictionary, then pressing 'Scan disk' and watching the janitor walk the model folders live"}, {"type": "video", "src": "media/aaaflow/09-gatherer-queue.mp4", "poster": "media/aaaflow/09-gatherer-queue.png", "group": "The app, driven live", "caption": "The Data Gatherer that turns reference videos into evidence packs, and the job queue that serializes every model on one GPU"}, {"type": "video", "src": "media/aaaflow/10-voicelab-training.mp4", "poster": "media/aaaflow/10-voicelab-training.png", "group": "The app, driven live", "caption": "Voice Lab, where narrator voices are designed in words or cloned from clean speech, then the LoRA Training page"}, {"type": "video", "src": "media/aaaflow/excerpt-fathom.mp4", "poster": "media/aaaflow/excerpt-fathom.png", "group": "Finished output", "caption": "Fathom: 'The Kid Who Took Over Twitter', investigative documentary style, produced entirely by the pipeline"}, {"type": "video", "src": "media/aaaflow/excerpt-menagerie.mp4", "poster": "media/aaaflow/excerpt-menagerie.png", "group": "Finished output", "caption": "The Midnight Menagerie: from the 10-minute, 141-scene film in the channel's dark-carnival style, with its designed narrator"}, {"type": "video", "src": "media/aaaflow/excerpt-unruly.mp4", "poster": "media/aaaflow/excerpt-unruly.png", "group": "Finished output", "caption": "Unruly History: hand-inked comic history, a completely different look from the same pipeline"}, {"type": "image", "src": "media/aaaflow/brand-menagerie-banner.jpg", "group": "Brand identity, generated in-app", "caption": "The Midnight Menagerie's banner, from the channel's own art direction"}, {"type": "image", "src": "media/aaaflow/brand-menagerie-thumb.jpg", "group": "Brand identity, generated in-app", "caption": "A Menagerie thumbnail model"}, {"type": "image", "src": "media/aaaflow/brand-unruly-banner.jpg", "group": "Brand identity, generated in-app", "caption": "Unruly History's banner: same generator, completely different channel DNA"}], "highlights": ["Runs entirely on one RTX 5060 Ti 16 GB with zero cloud calls. A single job queue serializes TTS, image, video and music models, and engines load lazily and auto-unload so nothing fights over VRAM.", "Channels are minted by prompt: tell the local LLM the theme and the studio invents the channel, its niche, art direction, designed voice, topic bank and rendered brand identity. Four exist today; the set is unbounded.", "Per-channel autopilot: 'make a video for this channel' works with any local LLM (Ollama-served or in-process). It reads the channel's skills, dictionaries and defaults, so the result lands in that channel's own style without any per-video steering.", "Voice first: the whole script is narrated in one take, humanized, then Whisper aligns every scene to that voice, so all timing flows from the narration.", "Channels can also be born by STUDYING a reference channel: evidence packs measure its style shot by shot, the findings distill into skill packs, and a new channel is generated from them, LoRA and all.", "A deterministic auto-director plus one editable 'effects grammar' dictionary decide every transition, sound and emphasis, so even a weak script yields a competently edited video.", "Text is never burned into frames: Wan renders content, Remotion typesets all on-screen text, and a vision-model glyph guard re-rolls any clip that leaks letters.", "Every critique becomes a system change, never a one-off fix: no phantom hands or mirrors, clothed figures enforced in code, a flat natural narrator, endings that settle instead of stop.", "Ships like a product: research-driven SEO, eight typeset thumbnail templates, vertical Shorts, scheduled private-first uploads, and live YouTube-side status with drift detection."], "metrics": [{"label": "Lines of code", "value": "28.9k"}, {"label": "API endpoints", "value": "60"}, {"label": "Pipeline stages", "value": "9"}, {"label": "Channels, mint by prompt", "value": "4+"}, {"label": "Videos produced", "value": "6"}, {"label": "Finished footage", "value": "~25 min"}, {"label": "Scenes composed", "value": "370"}, {"label": "Longest video", "value": "141 scenes"}, {"label": "Cloud services", "value": "0"}, {"label": "GPU", "value": "1x 16 GB"}], "links": [{"label": "▶ Watch a published video", "url": "https://youtu.be/r6i7-IblGWQ", "kind": "video"}, {"label": "The 10-minute film", "url": "https://youtu.be/z5jJEf9Tncw", "kind": "video"}, {"label": "The channel on YouTube", "url": "https://www.youtube.com/@MidnightManagerie", "kind": "demo"}, {"label": "GitHub", "url": "https://github.com/VillAlfonso/AAAFlow", "kind": "repo"}], "sections": [{"heading": "Channels are software, not a fixed set", "body": "Every channel is its own studio: a folder holding its niche, art direction, designed voice, pipeline defaults, brand kit and YouTube credentials. The app opens on a hub of channel cards, and new channels are CREATED, not configured: describe a theme ('make a channel that does X, in this style') and the local LLM invents the concept, topic bank and voice while the brand generator renders its visual identity from a fixed ComfyUI node graph. Producing for a channel is the same trick in reverse: the autopilot reads that channel's skills and dictionaries, so 'make a video for this channel' comes out in its style with no per-video direction. Four channels exist today:\n\n- Main, the experimental sandbox: five original seed channels merged into one everything-channel, used for trying things, never meant to publish. It carries the earliest proven defaults and the first produced video (the man who sold the Eiffel Tower).\n- The Midnight Menagerie, 'every exhibit was real': true-macabre stories presented as a dark-carnival sideshow. Ten-slot generated identity, a designed narrator with a performance arc that begins curious and settles as the story closes, a VHS filter and an ember color grade. Three videos, including the 10-minute, 141-scene film; two of them are public on YouTube right now (@MidnightManagerie, linked above).\n- Unruly History, 'the past, behaving badly': extreme true history told as deadpan hand-inked comic storytelling, with its own faster-paced voice design.\n- Fathom, 'true stories, properly investigated': born differently. A reference documentary channel was STUDIED: the study intake pulled its uploads, ranked them by views, and ran the top videos through the Data Gatherer at one-second sampling. The analysis measured what that channel actually shows against what its narrator says, shot by shot. The findings became skill packs, the packs became a new channel, and a Wan style LoRA was trained on a curated, shot-aligned dataset to carry the look."}, {"heading": "How a video gets made", "body": "The pipeline order is non-negotiable, and voice comes first.\n\n- It starts with an idea typed into the channel's Autopilot box. A local LLM (Ollama-served, with an in-process fallback; models are swappable) interprets it, researches the story (dates, people, reference photos), and writes the script against a strict spec: cold open under 12 words, context before event, one idea per scene, a curiosity gap that lives only in the title and hook.\n- One-take narration: the entire script goes through Qwen3-TTS in a single pass, gets humanized (mic, room and pacing imperfections), then Whisper aligns every scene to the take and QA-checks the transcript against the script. Word-level timestamps become the clock for everything downstream.\n- Every scene gets a still from krea2 via ComfyUI, composed under the channel's art direction. Hero scenes earn real Wan 2.2 14B motion clips, sharpened by Real-ESRGAN, each running as long as its scene stays on screen.\n- The auto-director fills in what the writer didn't: transitions, shot variety, sound cues, and one word-synced emphasis per scene, all chosen from the effects grammar. Date stamps, name tags and evidence 'receipts' are typeset by Remotion, never drawn by the video model.\n- A mood-matched instrumental bed is auto-scored under the voice. Assembly runs segmented and in parallel, the ending fades to black with the audio easing out, and a final ffmpeg color-grade pass (bloom, vignette, grain) goes over the finished file.\n- Packaging writes research-driven SEO that quotes the video's own narration, renders thumbnail variants from typeset templates, cuts vertical Shorts at scene boundaries, and uploads private-first to the channel's YouTube account on a schedule, as a 1440p master so YouTube grants it a better bitrate tier. The publish page then shows the on-platform truth live: processing state, privacy, and whether the live title has drifted from the app's."}, {"heading": "The system carries the intelligence", "body": "The design principle throughout: the pipeline must produce a competent video even when the writing model is small and local. Everything that can be decided deterministically is.\n\n- One editable JSON dictionary, the effects grammar, maps narration beats (money, reveal, impact, motion) to the stinger, the transition, the shot rotation and the music mood. The director and the audio scorer both read it, so teaching the system a new reflex is a one-file edit, visible right in Settings.\n- Safety and quality rules are enforced in code, not trust: a no-text negative prompt is force-appended to every render, a vision model inspects each clip for leaked glyphs and re-rolls the seed, and every figure must be explicitly clothed in the prompt.\n- Per-video variance is engineered: direction cards bend each video's hook style and rhythm, thumbnail templates rotate so no two consecutive videos match, and title formulas rotate the same way. Same rules every time, different skeleton every video."}, {"heading": "The hard part", "body": "- 16 GB of VRAM for TTS, image, video and music models meant strict orchestration: lazy loading, stage-by-stage frees during production, an idle reaper, and one queue everything must pass through.\n- Beating the AI tells was an iteration loop with real stakes: watch the render, list every tell (an extra hand, a wrong reflection, a robotic ending, burned-in gibberish), then fix the system so that class of error can't recur. The rules file reads like a war journal.\n- It survived a real data-loss incident: the channels folder was wiped outside the app. The scripts were recovered from session transcripts and, because every generated PNG and Wan clip embeds its own generation graph, 242 images and all 36 motion clips were recovered bit-for-bit from the render cache without a single GPU minute. The studio now git-tracks exactly what defines it."}], "repo": {"languages": {"Python": 75.4, "JavaScript": 19.0, "CSS": 2.5, "TypeScript": 1.2, "HTML": 1.2}, "commits": 44, "first_commit": "2026-06-27", "last_commit": "2026-07-15"}, "generated_at": "2026-07-16", "generated_by": "showcase-kit v2"}]}</script>
+<script id="data" type="application/json">{"owner": {"name": "Reblobler", "role": "creative developer", "bio": "code, motion & machine-made pictures. b. 2004. i build things end to end — usually on one gpu and a lot of grid paper.", "links": [{"label": "← main portfolio", "url": "/"}, {"label": "GitHub", "url": "https://github.com/VillAlfonso"}, {"label": "Email", "url": "mailto:quertgamer@gmail.com"}]}, "projects": [{"slug": "aaaflow", "name": "AAAFlow Studio", "tagline": "Type a script in, a finished YouTube video comes out. Fully local, one GPU, zero cloud.", "made_with": "Claude Fable", "note": "Built end to end with Claude Fable. I used up my entire Claude Fable allowance on this one project, and this is what came out of it: a studio that runs a whole fleet of YouTube channels off one gaming GPU.", "summary": "AAAFlow is a local-first video studio that turns a written script, or just an idea, into a finished, human-looking YouTube video on a single machine: an RTX 5060 Ti with 16 GB of VRAM, no cloud calls at all. It runs a strict voice-first pipeline (the whole script is narrated in one take, and everything else is timed to that narration), and channels are a generative resource: describe a theme to the local LLM and the studio mints a whole new channel, identity, voice and all, then produces videos in that channel's own style on request. Four channels exist today. Six videos have been produced, about 25 minutes of finished footage across 370 composed scenes, from 3-minute stories to a 10-minute, 141-scene documentary, and two of them are public on YouTube right now. The bar is simple: if a viewer or a platform can tell it was AI-generated, that is a failure.", "problem": "Most AI video tools produce obvious, formulaic output and lean on the cloud. AAAFlow aims for the opposite: broadcast-quality, human-looking videos produced end to end on one consumer GPU, driven entirely by a script, with every stage tuned to remove the tells that give AI video away, and every published critique turned into a permanent system fix rather than a one-off patch.", "role": "Solo builder. Architecture, pipeline, model integration, and the full UI.", "status": "active", "year": 2026, "featured": true, "tech": ["Python", "FastAPI", "JavaScript", "ComfyUI", "Wan 2.2", "Qwen3-TTS", "krea2", "ACE-Step 1.5", "Remotion", "Whisper", "Real-ESRGAN", "ffmpeg", "Ollama"], "topics": ["Generative AI", "Local-first", "Video", "Automation"], "media": [{"type": "video", "src": "media/aaaflow/01-hub-brand.mp4", "poster": "media/aaaflow/01-hub-brand.png", "role": "hero", "caption": "Pressing 'Brand preview' on a channel card: the channel's whole identity, plus its edit & sound grammar, rendered from one fixed krea2 node graph"}, {"type": "image", "src": "media/aaaflow/pipeline-diagram.png", "group": "The architecture", "caption": "The whole machine: the nine-step production pipeline, and the learning loop that grows new channels from studied references"}, {"type": "video", "src": "media/aaaflow/02-autopilot.mp4", "poster": "media/aaaflow/02-autopilot.png", "group": "The app, driven live", "caption": "Typing an idea into Autopilot. From here the local LLM researches the story, writes the script in this channel's voice, and produces the whole video; we stop just short of pressing go"}, {"type": "video", "src": "media/aaaflow/03-script-voice.mp4", "poster": "media/aaaflow/03-script-voice.png", "group": "The app, driven live", "caption": "A real project's storyboard, then stepping into Voice: the one-take narration that every scene's timing is aligned to"}, {"type": "video", "src": "media/aaaflow/04-images-animate.mp4", "poster": "media/aaaflow/04-images-animate.png", "group": "The app, driven live", "caption": "The generated stills for every scene, then Animate: which scenes earned real Wan 2.2 motion clips"}, {"type": "video", "src": "media/aaaflow/05-edit-grammar.mp4", "poster": "media/aaaflow/05-edit-grammar.png", "group": "The app, driven live", "caption": "The Edit plan: every transition, sound cue and word-synced emphasis the auto-director chose, scene by scene, from the effects grammar"}, {"type": "video", "src": "media/aaaflow/06-preview-play.mp4", "poster": "media/aaaflow/06-preview-play.png", "group": "The app, driven live", "caption": "Pressing play on a finished render inside the studio. This 3-minute video was produced end to end by the pipeline"}, {"type": "video", "src": "media/aaaflow/07-publish-youtube.mp4", "poster": "media/aaaflow/07-publish-youtube.png", "group": "The app, driven live", "caption": "Publish for a live video: the SEO package, typeset thumbnail variants, Shorts cutter, and real YouTube upload rows with on-platform status"}, {"type": "video", "src": "media/aaaflow/08-settings-storage.mp4", "poster": "media/aaaflow/08-settings-storage.png", "group": "The app, driven live", "caption": "Settings: the editable effects-grammar dictionary, then pressing 'Scan disk' and watching the janitor walk the model folders live"}, {"type": "video", "src": "media/aaaflow/09-gatherer-queue.mp4", "poster": "media/aaaflow/09-gatherer-queue.png", "group": "The app, driven live", "caption": "The Data Gatherer that turns reference videos into evidence packs, and the job queue that serializes every model on one GPU"}, {"type": "video", "src": "media/aaaflow/10-voicelab-training.mp4", "poster": "media/aaaflow/10-voicelab-training.png", "group": "The app, driven live", "caption": "Voice Lab, where narrator voices are designed in words or cloned from clean speech, then the LoRA Training page"}, {"type": "video", "src": "media/aaaflow/excerpt-fathom.mp4", "poster": "media/aaaflow/excerpt-fathom.png", "group": "Finished output", "caption": "Fathom: 'The Kid Who Took Over Twitter', investigative documentary style, produced entirely by the pipeline"}, {"type": "video", "src": "media/aaaflow/excerpt-menagerie.mp4", "poster": "media/aaaflow/excerpt-menagerie.png", "group": "Finished output", "caption": "The Midnight Menagerie: from the 10-minute, 141-scene film in the channel's dark-carnival style, with its designed narrator"}, {"type": "video", "src": "media/aaaflow/excerpt-unruly.mp4", "poster": "media/aaaflow/excerpt-unruly.png", "group": "Finished output", "caption": "Unruly History: hand-inked comic history, a completely different look from the same pipeline"}, {"type": "image", "src": "media/aaaflow/brand-menagerie-banner.jpg", "group": "Brand identity, generated in-app", "caption": "The Midnight Menagerie's banner, from the channel's own art direction"}, {"type": "image", "src": "media/aaaflow/brand-menagerie-thumb.jpg", "group": "Brand identity, generated in-app", "caption": "A Menagerie thumbnail model"}, {"type": "image", "src": "media/aaaflow/brand-unruly-banner.jpg", "group": "Brand identity, generated in-app", "caption": "Unruly History's banner: same generator, completely different channel DNA"}], "highlights": ["Runs entirely on one RTX 5060 Ti 16 GB with zero cloud calls. A single job queue serializes TTS, image, video and music models, and engines load lazily and auto-unload so nothing fights over VRAM.", "Channels are minted by prompt: tell the local LLM the theme and the studio invents the channel, its niche, art direction, designed voice, topic bank and rendered brand identity. Four exist today; the set is unbounded.", "Per-channel autopilot: 'make a video for this channel' works with any local LLM (Ollama-served or in-process). It reads the channel's skills, dictionaries and defaults, so the result lands in that channel's own style without any per-video steering.", "Voice first: the whole script is narrated in one take, humanized, then Whisper aligns every scene to that voice, so all timing flows from the narration.", "Channels can also be born by STUDYING a reference channel: evidence packs measure its style shot by shot, the findings distill into skill packs, and a new channel is generated from them, LoRA and all.", "A deterministic auto-director plus one editable 'effects grammar' dictionary decide every transition, sound and emphasis, so even a weak script yields a competently edited video.", "Audio is generated, never licensed: ACE-Step 1.5 auto-scores a mood-matched music bed and the sound effects for every video, specialized per channel from an editable sound grammar, so nothing is pulled from a stock library.", "Text is never burned into frames: Wan renders content, Remotion typesets all on-screen text, and a vision-model glyph guard re-rolls any clip that leaks letters.", "Every critique becomes a system change, never a one-off fix: no phantom hands or mirrors, clothed figures enforced in code, a flat natural narrator, endings that settle instead of stop.", "Ships like a product: research-driven SEO, eight typeset thumbnail templates, vertical Shorts, scheduled private-first uploads, and live YouTube-side status with drift detection."], "metrics": [{"label": "Lines of code", "value": "28.9k"}, {"label": "API endpoints", "value": "60"}, {"label": "Pipeline stages", "value": "9"}, {"label": "Channels, mint by prompt", "value": "4+"}, {"label": "Videos produced", "value": "6"}, {"label": "Finished footage", "value": "~25 min"}, {"label": "Scenes composed", "value": "370"}, {"label": "Longest video", "value": "141 scenes"}, {"label": "Cloud services", "value": "0"}, {"label": "GPU", "value": "1x 16 GB"}], "links": [{"label": "▶ Watch a published video", "url": "https://youtu.be/r6i7-IblGWQ", "kind": "video"}, {"label": "The 10-minute film", "url": "https://youtu.be/z5jJEf9Tncw", "kind": "video"}, {"label": "The channel on YouTube", "url": "https://www.youtube.com/@MidnightManagerie", "kind": "demo"}, {"label": "GitHub", "url": "https://github.com/VillAlfonso/AAAFlow", "kind": "repo"}], "sections": [{"heading": "Channels are software, not a fixed set", "body": "Every channel is its own studio: a folder holding its niche, art direction, designed voice, pipeline defaults, brand kit and YouTube credentials. The app opens on a hub of channel cards, and new channels are CREATED, not configured: describe a theme ('make a channel that does X, in this style') and the local LLM invents the concept, topic bank and voice while the brand generator renders its visual identity from a fixed ComfyUI node graph. Producing for a channel is the same trick in reverse: the autopilot reads that channel's skills and dictionaries, so 'make a video for this channel' comes out in its style with no per-video direction. Four channels exist today:\n\n- Main, the experimental sandbox: five original seed channels merged into one everything-channel, used for trying things, never meant to publish. It carries the earliest proven defaults and the first produced video (the man who sold the Eiffel Tower).\n- The Midnight Menagerie, 'every exhibit was real': true-macabre stories presented as a dark-carnival sideshow. Ten-slot generated identity, a designed narrator with a performance arc that begins curious and settles as the story closes, a VHS filter and an ember color grade. Three videos, including the 10-minute, 141-scene film; two of them are public on YouTube right now (@MidnightManagerie, linked above).\n- Unruly History, 'the past, behaving badly': extreme true history told as deadpan hand-inked comic storytelling, with its own faster-paced voice design.\n- Fathom, 'true stories, properly investigated': born differently. A reference documentary channel was STUDIED: the study intake pulled its uploads, ranked them by views, and ran the top videos through the Data Gatherer at one-second sampling. The analysis measured what that channel actually shows against what its narrator says, shot by shot. The findings became skill packs, the packs became a new channel, and a Wan style LoRA was trained on a curated, shot-aligned dataset to carry the look."}, {"heading": "How a video gets made", "body": "The pipeline order is non-negotiable, and voice comes first.\n\n- It starts with an idea typed into the channel's Autopilot box. A local LLM (Ollama-served, with an in-process fallback; models are swappable) interprets it, researches the story (dates, people, reference photos), and writes the script against a strict spec: cold open under 12 words, context before event, one idea per scene, a curiosity gap that lives only in the title and hook.\n- One-take narration: the entire script goes through Qwen3-TTS in a single pass, gets humanized (mic, room and pacing imperfections), then Whisper aligns every scene to the take and QA-checks the transcript against the script. Word-level timestamps become the clock for everything downstream.\n- Every scene gets a still from krea2 via ComfyUI, composed under the channel's art direction. Hero scenes earn real Wan 2.2 14B motion clips, sharpened by Real-ESRGAN, each running as long as its scene stays on screen.\n- The auto-director fills in what the writer didn't: transitions, shot variety, sound cues, and one word-synced emphasis per scene, all chosen from the effects grammar. Date stamps, name tags and evidence 'receipts' are typeset by Remotion, never drawn by the video model.\n- ACE-Step 1.5 scores every video's audio automatically: a mood-matched instrumental bed plus per-scene sound effects, generated fresh for each video from that channel's sound grammar rather than pulled from a stock library, then mixed under the voice. Assembly runs segmented and in parallel, the ending fades to black with the audio easing out, and a final ffmpeg color-grade pass (bloom, vignette, grain) goes over the finished file.\n- Packaging writes research-driven SEO that quotes the video's own narration, renders thumbnail variants from typeset templates, cuts vertical Shorts at scene boundaries, and uploads private-first to the channel's YouTube account on a schedule, as a 1440p master so YouTube grants it a better bitrate tier. The publish page then shows the on-platform truth live: processing state, privacy, and whether the live title has drifted from the app's."}, {"heading": "The system carries the intelligence", "body": "The design principle throughout: the pipeline must produce a competent video even when the writing model is small and local. Everything that can be decided deterministically is.\n\n- One editable JSON dictionary, the effects grammar, maps narration beats (money, reveal, impact, motion) to the stinger, the transition, the shot rotation and the music mood. The director and the ACE-Step 1.5 audio scorer both read it, so teaching the system a new reflex is a one-file edit, visible right in Settings.\n- Safety and quality rules are enforced in code, not trust: a no-text negative prompt is force-appended to every render, a vision model inspects each clip for leaked glyphs and re-rolls the seed, and every figure must be explicitly clothed in the prompt.\n- Per-video variance is engineered: direction cards bend each video's hook style and rhythm, thumbnail templates rotate so no two consecutive videos match, and title formulas rotate the same way. Same rules every time, different skeleton every video."}, {"heading": "The hard part", "body": "- 16 GB of VRAM for TTS, image, video and music models meant strict orchestration: lazy loading, stage-by-stage frees during production, an idle reaper, and one queue everything must pass through.\n- Beating the AI tells was an iteration loop with real stakes: watch the render, list every tell (an extra hand, a wrong reflection, a robotic ending, burned-in gibberish), then fix the system so that class of error can't recur. The rules file reads like a war journal.\n- It survived a real data-loss incident: the channels folder was wiped outside the app. The scripts were recovered from session transcripts and, because every generated PNG and Wan clip embeds its own generation graph, 242 images and all 36 motion clips were recovered bit-for-bit from the render cache without a single GPU minute. The studio now git-tracks exactly what defines it."}], "repo": {"languages": {"Python": 75.4, "JavaScript": 19.0, "CSS": 2.5, "TypeScript": 1.2, "HTML": 1.2}, "commits": 44, "first_commit": "2026-06-27", "last_commit": "2026-07-15"}, "generated_at": "2026-07-16", "generated_by": "showcase-kit v2"}]}</script>
 <script>
 const DATA = JSON.parse(document.getElementById('data').textContent);
 const OWNER = DATA.owner || {};
 const PROJECTS = (DATA.projects || []).slice().sort((a,b) =>
   (b.featured?1:0)-(a.featured?1:0) || (b.year||0)-(a.year||0));
-if (OWNER.accent) document.documentElement.style.setProperty('--accent', OWNER.accent);
-document.getElementById('brandName').textContent = OWNER.name || 'Portfolio';
+document.getElementById('brandName').textContent = OWNER.name || 'portfolio';
 const bySlug = Object.fromEntries(PROJECTS.map(p => [p.slug, p]));
+const SQUIG = '<svg class="squig" viewBox="0 0 120 9" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6C18 2 34 8 52 5C70 2 88 8 118 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+
+// spiral binding holes
+document.getElementById('binding').innerHTML = Array.from({length:40},()=>'<span></span>').join('');
 
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function chips(a){return (a||[]).map(t=>`<span class="chip">${esc(t)}</span>`).join('');}
@@ -145,27 +247,29 @@ function mdish(t){
 }
 
 function landing(){
-  const cards = PROJECTS.map(p=>{
+  const cards = PROJECTS.map((p,i)=>{
     const hm=heroMedia(p); const poster=posterOf(hm)||((p.media||[]).find(x=>x&&x.type==='image'&&x.src)||{}).src||'';
     const vid=isVid(hm)&&hm.src?esc(hm.src):'';
     const inner=poster?`<img src="${esc(poster)}" alt="${esc((hm&&hm.caption)||p.name)}" onerror="this.remove()">`:`<span class="ph">&#9670;</span>`;
+    const num=String(i+1).padStart(2,'0');
     return `
     <button class="card ${p.featured?'featured':''}" data-vid="${vid}" onclick="location.hash='#/p/${esc(p.slug)}'">
-      <div class="thumb">${inner}${vid?'<span class="live">▶ preview</span>':''}</div>
+      <span class="idx">${num}</span>
+      <div class="thumb">${inner}${vid?'<span class="live">&#9654; preview</span>':''}</div>
       <div class="card-body">
-        <h3>${esc(p.name)}</h3>
+        <h3>${esc(p.name)}${SQUIG}</h3>
         <p class="tl">${esc(p.tagline||'')}</p>
         <div class="chips">${chips((p.tech||[]).slice(0,5))}</div>
         <div class="rowmeta"><span class="dot"></span><span class="st">${esc(p.status||'')}</span>${p.year?'<span>&middot; '+p.year+'</span>':''}${p.made_with?'<span>&middot; made with '+esc(p.made_with)+'</span>':''}</div>
       </div>
     </button>`;}).join('');
   return `<section class="hero">
-      <div class="eyebrow">${esc(OWNER.role||'Selected work')}</div>
-      <h1>${esc(OWNER.name||'My Projects')}</h1>
+      <div class="eyebrow">${esc(OWNER.role||'selected work')}</div>
+      <h1>${esc(OWNER.name||'my projects')}${SQUIG}</h1>
       <p class="bio">${esc(OWNER.bio||'')}</p>
       ${(OWNER.links&&OWNER.links.length)?`<div class="owner-links">${OWNER.links.map(l=>`<a href="${esc(l.url)}">${esc(l.label)}</a>`).join('')}</div>`:''}
     </section>
-    <section class="grid">${cards||'<p>No projects yet.</p>'}</section>`;
+    <section class="grid">${cards||'<p>no projects yet.</p>'}</section>`;
 }
 
 function galleryHTML(items){
@@ -195,14 +299,14 @@ function detail(p){
   const sections=(p.sections||[]).map(s=>`<div class="sec"><h2>${esc(s.heading)}</h2>${mdish(s.body)}</div>`).join('');
   const highlights=(p.highlights&&p.highlights.length)?`<div class="sec"><h2>Highlights</h2><ul class="hl">${p.highlights.map(h=>`<li>${esc(h)}</li>`).join('')}</ul></div>`:'';
   return `<article class="detail">
-    <button class="back" onclick="location.hash='#/'">&#8592; All projects</button>
+    <button class="back" onclick="location.hash='#/'">&#8592; all projects</button>
     ${banner}
     <div class="dhead">
       <div class="eyebrow">${esc(p.status||'')}${p.year?' &middot; '+p.year:''}${p.role?' &middot; '+esc(p.role):''}</div>
-      <h1>${esc(p.name)}</h1>
+      <h1>${esc(p.name)}${SQUIG}</h1>
       <p class="tl">${esc(p.tagline||'')}</p>
     </div>
-    <div class="badges">${p.made_with?`<span class="madewith">Made with <b>${esc(p.made_with)}</b></span>`:''}</div>
+    <div class="badges">${p.made_with?`<span class="madewith">made with <b>${esc(p.made_with)}</b></span>`:''}</div>
     ${links?`<div class="dlinks">${links}</div>`:''}
     ${p.note?`<div class="note">${mdish(p.note)}</div>`:''}
     ${galleries}
@@ -255,13 +359,15 @@ function wireHover(){                                 // featured delight: hover
 }
 document.getElementById('lb').addEventListener('click',e=>e.currentTarget.classList.remove('open'));
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.getElementById('lb').classList.remove('open'); });
-const saved=localStorage.getItem('pf-theme'); if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+// theme toggle — shares localStorage.theme + the .dark class with the main portfolio
 document.getElementById('themeBtn').addEventListener('click',()=>{
-  const cur=document.documentElement.getAttribute('data-theme');
-  const nx=(cur==='light')?'dark':'light';
-  document.documentElement.setAttribute('data-theme',nx); localStorage.setItem('pf-theme',nx);
+  const dark=!document.documentElement.classList.contains('dark');
+  document.documentElement.classList.toggle('dark',dark);
+  try{ localStorage.setItem('theme',dark?'dark':'light'); }catch(e){}
 });
-document.getElementById('foot').innerHTML=`<span>${esc(OWNER.name||'')}</span><span>&middot;</span><span>Built with showcase-kit</span><span>&middot;</span><span>${new Date().getFullYear()}</span>`;
+
+document.getElementById('foot').innerHTML=`<span>&copy; ${new Date().getFullYear()} ${esc(OWNER.name||'')}</span><span class="fh">built with grid paper &amp; showcase-kit :)</span><a href="#/">&#8593; top</a>`;
 window.addEventListener('hashchange',render);
 render();
 </script>
