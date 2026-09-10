@@ -9,6 +9,9 @@ export const profile = {
   socials: [
     { label: "github", href: "" },
     { label: "youtube", href: "" },
-    { label: "credly", href: "" },
+    {
+      label: "credly",
+      href: "https://www.credly.com/users/quert-alfonso-villafuerte.55a8c95e",
+    },
   ] as { label: string; href: string }[],
 };
