@@ -18,7 +18,7 @@ export default function StickerPortrait({
       <div className="rounded-[24px] border-[3px] border-[#17150f] bg-white p-2 shadow-[7px_9px_0_rgba(23,21,15,0.13)] dark:shadow-[7px_9px_0_rgba(0,0,0,0.5)]">
         <Image
           src="/reblobler.png"
-          alt="reblobler — a hand-drawn blob person with a lot of hair"
+          alt="Quert Alfonso M. Villafuerte — a hand-drawn blob person with a lot of hair"
           width={636}
           height={506}
           priority

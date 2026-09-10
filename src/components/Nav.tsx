@@ -22,7 +22,7 @@ export default function Nav() {
         className="group inline-flex items-center gap-1.5 text-[13px] font-semibold lowercase tracking-tight"
       >
         <StarDoodle className="h-3 w-3 text-ink/70 transition-transform duration-300 group-hover:rotate-90" />
-        reblobler
+        Quert Alfonso M. Villafuerte
       </Link>
 
       <div className="flex items-center gap-4 md:gap-7">

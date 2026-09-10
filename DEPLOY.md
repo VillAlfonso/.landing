@@ -1,7 +1,7 @@
 # Deploying updates to the live site
 
 This site is a Next.js app in this folder (`C:\.landing`), pushed to GitHub
-(`VillAlfonso/.landing`) and served on your Vercel domain. Below are the exact
+(`VillAlfonso/.landing`) and served at `https://quert.site`. Below are the exact
 commands to copy‑paste. Run them from **this folder** in PowerShell.
 
 ---
@@ -17,7 +17,7 @@ git commit -m "update site"
 git push
 ```
 
-Done. Vercel sees the push to `master`, rebuilds, and goes live on your domain in
+Done. Vercel sees the push to `master`, rebuilds, and goes live at `https://quert.site` in
 ~1–2 minutes. Track it at <https://vercel.com/dashboard>.
 
 > This works because your Vercel project is connected to this GitHub repo (the
@@ -69,7 +69,7 @@ That prints a preview link you can open and check before going live.
 vercel ls
 ```
 
-Shows recent deployments and their status. Or just open your domain in a private/
+Shows recent deployments and their status. Or just open `https://quert.site` in a private/
 incognito window (that dodges the browser cache so you see the fresh version).
 
 ---

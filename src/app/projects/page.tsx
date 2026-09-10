@@ -5,7 +5,9 @@ import ProjectRow from "@/components/ProjectRow";
 import Scribble from "@/components/Scribble";
 import { projects } from "@/data/projects";
 
-export const metadata: Metadata = { title: "projects — reblobler" };
+export const metadata: Metadata = {
+  title: "projects — Quert Alfonso M. Villafuerte",
+};
 
 export default function ProjectsPage() {
   return (

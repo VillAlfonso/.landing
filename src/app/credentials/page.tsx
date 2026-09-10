@@ -8,7 +8,9 @@ import { education, badges } from "@/data/credentials";
 import { stack } from "@/data/stack";
 import { projects } from "@/data/projects";
 
-export const metadata: Metadata = { title: "credentials — reblobler" };
+export const metadata: Metadata = {
+  title: "credentials — Quert Alfonso M. Villafuerte",
+};
 
 function SubHeader({ title, note }: { title: string; note?: string }) {
   return (

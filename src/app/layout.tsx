@@ -24,9 +24,11 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "reblobler — portfolio",
+  metadataBase: new URL("https://quert.site"),
+  title: "Quert Alfonso M. Villafuerte — portfolio",
   description:
-    "code, motion & machine-made pictures. the grid-paper portfolio of reblobler.",
+    "code, motion & machine-made pictures. the grid-paper portfolio of Quert Alfonso M. Villafuerte.",
+  alternates: { canonical: "/" },
 };
 
 const themeInit = `(function(){try{var s=localStorage.getItem("theme");var d=s?s==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.classList.toggle("dark",d);}catch(e){}})();`;

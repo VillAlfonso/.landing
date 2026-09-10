@@ -1,5 +1,5 @@
 export const profile = {
-  name: "Reblobler",
+  name: "Quert Alfonso M. Villafuerte",
   born: 2004,
   tagline: "code, motion & machine-made pictures",
   status: "open to interesting work",

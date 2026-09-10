@@ -1,4 +1,4 @@
-# reblobler — portfolio
+# Quert Alfonso M. Villafuerte — portfolio
 
 Minimalist black & white portfolio on squared notebook paper. Next.js 16 +
 Tailwind v4 + Motion. Light/dark from one monochrome token pair.

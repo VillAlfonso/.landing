@@ -3,7 +3,9 @@ import Reveal from "@/components/Reveal";
 import Scribble from "@/components/Scribble";
 import { profile } from "@/data/profile";
 
-export const metadata: Metadata = { title: "contact — reblobler" };
+export const metadata: Metadata = {
+  title: "contact — Quert Alfonso M. Villafuerte",
+};
 
 export default function ContactPage() {
   const socials = profile.socials.filter((s) => s.href);
