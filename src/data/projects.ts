@@ -1,7 +1,7 @@
 /**
  * Projects, newest first. `tech` holds stack ids (src/data/stack.ts) —
  * unknown ids still render as plain text chips and auto-appear in the
- * credentials toolbox. `featured` pins a project to the home page (top 3).
+ * credentials toolbox. `featured` identifies the homepage's lead project.
  *
  * Projects with a showcase-kit entry (C:\.showcase-kit) should source their
  * copy, tech and links from that project's showcase.json — see the
@@ -28,7 +28,6 @@ export const projects: Project[] = [
       "my institutional capstone: a web and mobile-capable document screening app for CCJE personnel at LSPU San Pablo. react meets fastapi, authenticated accounts, scan history, and gemini-assisted image analysis for human review.",
     tech: ["react", "vite", "capacitor", "python", "fastapi", "sqlite", "gemini"],
     href: "https://github.com/VillAlfonso/Revelator",
-    featured: true,
   },
   {
     slug: "aaaflow",
@@ -63,7 +62,6 @@ export const projects: Project[] = [
       "a git-aware project archiver that separates code, re-downloadable dependencies, and irreplaceable local files. bundles history, preserves uncommitted work, and verifies backups with SHA-256 manifests. python standard library, with a web UI and MCP tools.",
     tech: ["python", "git", "sha-256", "mcp"],
     href: "https://github.com/VillAlfonso/ark",
-    featured: true,
   },
   {
     slug: "showcase-kit",

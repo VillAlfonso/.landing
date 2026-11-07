@@ -37,6 +37,15 @@ export const achievements = [
     preview: "/certificates/it-skills-olympics.png",
     pdf: "/certificates/it-skills-olympics.pdf",
   },
+  {
+    title: "IT Specialist — Cloud Computing",
+    issuer: "Certiport · Pearson",
+    date: "May 21, 2026",
+    summary: "Completed the Information Technology Specialist certification requirements in Cloud Computing, demonstrating foundational knowledge of cloud solutions.",
+    note: "Foundational certification · expires May 21, 2031",
+    preview: "/certificates/it-specialist-cloud-computing.png",
+    pdf: "/certificates/it-specialist-cloud-computing.pdf",
+  },
 ];
 
 export const education: Education[] = [

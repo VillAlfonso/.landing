@@ -1,4 +1,5 @@
 import type { Project } from "@/data/projects";
+import Link from "next/link";
 import TechChip from "./TechChip";
 import { SquiggleUnderline } from "./doodles";
 
@@ -59,17 +60,13 @@ export default function ProjectRow({
     </article>
   );
 
-  return project.href ? (
-    <a
-      href={project.href}
-      target="_blank"
-      rel="noreferrer"
+  return (
+    <Link
+      href={`/projects/${project.slug}`}
       className="block"
       aria-label={`${project.title} — open project`}
     >
       {inner}
-    </a>
-  ) : (
-    inner
+    </Link>
   );
 }

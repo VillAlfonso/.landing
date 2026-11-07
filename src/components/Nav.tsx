@@ -28,7 +28,7 @@ export default function Nav() {
       <div className="flex w-full items-center justify-between gap-4 sm:w-auto md:gap-7">
         <nav className="flex items-center gap-3.5 md:gap-6">
           {LINKS.map((link) => {
-            const active = pathname === link.href;
+            const active = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href + "/"));
             return (
               <Link
                 key={link.href}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 import Scribble from "@/components/Scribble";
@@ -38,13 +39,14 @@ export default function CredentialsPage() {
         b. 2004 — everything after that is on this page
       </Scribble>
 
+      <Link href="/" className="mb-7 inline-block text-[12px] text-ink/60 hover:text-ink">← back to home</Link>
       <Reveal>
         <SectionHeader title="credentials" note="receipts, in order" />
       </Reveal>
 
       <Reveal delay={0.05} className="mt-14">
         <SubHeader title="certification & competition" note="recent milestones" />
-        <div className="mt-5 grid gap-5 md:grid-cols-2">
+        <div className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {achievements.map((item) => (
             <article key={item.title} className="rounded-lg border border-ink/15 p-6">
               <a

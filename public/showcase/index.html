@@ -299,7 +299,7 @@ function detail(p){
   const sections=(p.sections||[]).map(s=>`<div class="sec"><h2>${esc(s.heading)}</h2>${mdish(s.body)}</div>`).join('');
   const highlights=(p.highlights&&p.highlights.length)?`<div class="sec"><h2>Highlights</h2><ul class="hl">${p.highlights.map(h=>`<li>${esc(h)}</li>`).join('')}</ul></div>`:'';
   return `<article class="detail">
-    <button class="back" onclick="location.hash='#/'">&#8592; all projects</button>
+    <nav style="display:flex;flex-wrap:wrap;gap:20px" aria-label="Back navigation"><a class="back" href="/projects/aaaflow">&#8592; back to project</a><a class="back" href="/projects">all projects</a></nav>
     ${banner}
     <div class="dhead">
       <div class="eyebrow">${esc(p.status||'')}${p.year?' &middot; '+p.year:''}${p.role?' &middot; '+esc(p.role):''}</div>

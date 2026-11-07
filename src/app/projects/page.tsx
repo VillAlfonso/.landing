@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 import ProjectRow from "@/components/ProjectRow";
@@ -16,6 +17,7 @@ export default function ProjectsPage() {
         ship early, doodle often
       </Scribble>
 
+      <Link href="/" className="mb-7 inline-block text-[12px] text-ink/60 hover:text-ink">← back to home</Link>
       <Reveal>
         <SectionHeader
           title="projects"

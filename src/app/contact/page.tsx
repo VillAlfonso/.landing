@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Scribble from "@/components/Scribble";
 import { profile } from "@/data/profile";
@@ -16,6 +17,7 @@ export default function ContactPage() {
         no spam pls
       </Scribble>
 
+      <Link href="/" className="mb-7 inline-block text-[12px] text-ink/60 hover:text-ink">← back to home</Link>
       <Reveal>
         <p className="-rotate-2 font-hand text-2xl text-ink/50">
           don't be a stranger

@@ -2,14 +2,12 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
-import ProjectRow from "@/components/ProjectRow";
+import FeaturedProject from "@/components/FeaturedProject";
 import { SquiggleUnderline } from "@/components/doodles";
-import { projects } from "@/data/projects";
 import { profile } from "@/data/profile";
 import { achievements } from "@/data/credentials";
 
 export default function Home() {
-  const featured = projects.filter((p) => p.featured).slice(0, 3);
 
   return (
     <div>
@@ -42,12 +40,7 @@ export default function Home() {
           <SectionHeader title="featured work" note="the good stuff" />
         </Reveal>
         <Reveal delay={0.05}>
-          <div>
-            {featured.map((p, i) => (
-              <ProjectRow key={p.slug} project={p} index={i} />
-            ))}
-            <div className="border-t border-ink/10" />
-          </div>
+          <FeaturedProject />
         </Reveal>
         <Reveal>
           <Link
