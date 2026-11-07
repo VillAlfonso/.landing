@@ -9,13 +9,13 @@ import {
 } from "react";
 import {
   motion,
-  useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
   type MotionValue,
 } from "motion/react";
 import { profile } from "@/data/profile";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import { stack } from "@/data/stack";
 import StackIcon from "./StackIcon";
 import StickerPortrait from "./StickerPortrait";
@@ -51,10 +51,10 @@ const LOGO_SLOTS: Slot[] = [
   { x: 15, y: 85, s: 72, d: 0.7, r: 1.0, dur: 9.4 },
   { x: 77, y: 79, s: 60, d: 0.55, r: 1.3, dur: 7.8, sy: 88 },
   { x: 4, y: 60, s: 48, d: 0.5, r: -0.8, dur: 8.8, sy: 74 },
-  { x: 90, y: 7, s: 44, d: 0.35, r: -1.1, dur: 8.4 },
+  { x: 90, y: 7, s: 44, d: 0.35, r: -1.1, dur: 8.4, sy: 23 },
   // spares — used automatically as the stack grows
   { x: 66, y: 90, s: 46, d: 0.55, r: 0.9, dur: 7.3 },
-  { x: 30, y: 6, s: 48, d: 0.4, r: -1.2, dur: 9.6 },
+  { x: 30, y: 6, s: 48, d: 0.4, r: -1.2, dur: 9.6, sy: 22 },
 ];
 
 const GLYPHS = [
@@ -132,7 +132,7 @@ function FieldItem({
 
 export default function Hero() {
   const ref = useRef<HTMLElement | null>(null);
-  const reduce = useReducedMotion() ?? false;
+  const reduce = usePrefersReducedMotion();
   const [small, setSmall] = useState(false);
 
   useEffect(() => {

@@ -29,6 +29,11 @@ export default function ProjectRow({
               (sample — replace me)
             </span>
           )}
+          {project.privateSource && (
+            <span className="text-[10px] uppercase tracking-wider text-ink/45">
+              private source
+            </span>
+          )}
         </div>
         <p className="mt-2.5 max-w-[54ch] text-[13px] leading-relaxed text-ink/60">
           {project.description}

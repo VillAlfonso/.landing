@@ -4,7 +4,8 @@ import SectionHeader from "@/components/SectionHeader";
 import Scribble from "@/components/Scribble";
 import StackIcon from "@/components/StackIcon";
 import { ShieldDoodle } from "@/components/doodles";
-import { education, badges } from "@/data/credentials";
+import { education, badges, achievements } from "@/data/credentials";
+import { profile } from "@/data/profile";
 import { stack } from "@/data/stack";
 import { projects } from "@/data/projects";
 
@@ -42,6 +43,20 @@ export default function CredentialsPage() {
       </Reveal>
 
       <Reveal delay={0.05} className="mt-14">
+        <SubHeader title="certification & competition" note="recent milestones" />
+        <div className="mt-5 grid gap-5 md:grid-cols-2">
+          {achievements.map((item) => (
+            <article key={item.title} className="rounded-lg border border-ink/15 p-6">
+              <p className="text-[11px] text-ink/45">{item.date} · {item.issuer}</p>
+              <h3 className="mt-3 font-display text-xl uppercase tracking-wide">{item.title}</h3>
+              <p className="mt-3 text-[13px] leading-relaxed text-ink/70">{item.summary}</p>
+              <p className="mt-4 text-[11px] text-ink/50">{item.note}</p>
+            </article>
+          ))}
+        </div>
+      </Reveal>
+
+      <Reveal className="mt-20">
         <SubHeader title="education" />
         <div className="mt-5">
           {education.map((e) => (
@@ -115,6 +130,7 @@ export default function CredentialsPage() {
 
       <Reveal className="mt-20">
         <SubHeader title="toolbox" note="auto-updates as projects land" />
+        <p className="mt-5 max-w-3xl text-[13px] leading-relaxed text-ink/65">{profile.experiments}</p>
         <div className="mt-6 flex flex-wrap gap-2">
           {stack.map((s) => (
             <span

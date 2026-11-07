@@ -21,4 +21,6 @@ export const stack: StackItem[] = [
   { id: "fastapi", name: "FastAPI" },
   { id: "ffmpeg", name: "FFmpeg" },
   { id: "ollama", name: "Ollama" },
+  { id: "react", name: "React" },
+  { id: "typescript", name: "TypeScript" },
 ];

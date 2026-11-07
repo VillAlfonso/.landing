@@ -6,6 +6,8 @@ import {
   siJavascript,
   siOllama,
   siPython,
+  siReact,
+  siTypescript,
 } from "simple-icons";
 import type { ReactNode } from "react";
 
@@ -30,6 +32,8 @@ export const simpleIconPaths: Record<string, string> = {
   fastapi: siFastapi.path,
   ffmpeg: siFfmpeg.path,
   ollama: siOllama.path,
+  react: siReact.path,
+  typescript: siTypescript.path,
 };
 
 export const iconColors: Record<string, string> = {
@@ -39,6 +43,8 @@ export const iconColors: Record<string, string> = {
   cloudflare: `#${siCloudflare.hex}`,
   fastapi: `#${siFastapi.hex}`,
   ffmpeg: `#${siFfmpeg.hex}`,
+  react: `#${siReact.hex}`,
+  typescript: `#${siTypescript.hex}`,
   comfyui: "#3b82f6",
   aws: "#ff9900",
   remotion: "#0b84f3",

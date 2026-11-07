@@ -16,15 +16,26 @@ export type Project = {
   href?: string;
   featured?: boolean;
   sample?: boolean;
+  privateSource?: boolean;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "revelator",
+    title: "revelator",
+    year: "2026",
+    description:
+      "my institutional capstone: a web and mobile-capable document screening app for CCJE personnel at LSPU San Pablo. react meets fastapi, authenticated accounts, scan history, and gemini-assisted image analysis for human review.",
+    tech: ["react", "vite", "capacitor", "python", "fastapi", "sqlite", "gemini"],
+    href: "https://github.com/VillAlfonso/Revelator",
+    featured: true,
+  },
   {
     slug: "aaaflow",
     title: "aaaflow studio",
     year: "2026",
     description:
-      "a local-first video studio: type a script — or just an idea — and a finished, human-looking youtube video comes out the other end. one consumer gpu, zero cloud, voice-first pipeline, channels minted by prompt. two of its videos are live on youtube right now.",
+      "a local-first video studio connecting scripts, voices, generated visuals, and final video assembly on a consumer gpu. a voice-first pipeline with channel personas shaped by prompts; two resulting videos are published on youtube.",
     tech: [
       "python",
       "fastapi",
@@ -45,12 +56,86 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "ark",
+    title: "ark",
+    year: "2026",
+    description:
+      "a git-aware project archiver that separates code, re-downloadable dependencies, and irreplaceable local files. bundles history, preserves uncommitted work, and verifies backups with SHA-256 manifests. python standard library, with a web UI and MCP tools.",
+    tech: ["python", "git", "sha-256", "mcp"],
+    privateSource: true,
+    featured: true,
+  },
+  {
+    slug: "showcase-kit",
+    title: "showcase kit",
+    year: "2026",
+    description:
+      "a reusable kit for turning codebases into portfolio case studies. repository probes, browser captures, structured project data, and a static-site builder bring the work together. the aaaflow showcase on this site was built with it.",
+    tech: ["python", "playwright", "html", "json schema"],
+    href: "/showcase/index.html#/p/aaaflow",
+    privateSource: true,
+  },
+  {
+    slug: "prosody",
+    title: "prosody",
+    year: "2026",
+    description:
+      "a browser-based speech studio with inline emotion tags, pitch and pacing controls, reusable presets, and a segment timeline. edge-TTS supplies the online base voice; an optional local RVC stage handles voice conversion.",
+    tech: ["python", "fastapi", "javascript", "edge-tts", "rvc", "ffmpeg"],
+    href: "https://github.com/VillAlfonso/Prosody",
+  },
+  {
+    slug: "ytauto",
+    title: "ytauto",
+    year: "2026",
+    description:
+      "a youtube trend dashboard pairing a next.js frontend with a fastapi backend. server-side caching and an engagement proxy help compare candidate videos without claiming access to private retention data. automated video rendering is on the roadmap.",
+    tech: ["typescript", "next.js", "python", "fastapi", "youtube data api"],
+    href: "https://github.com/VillAlfonso/YTauto",
+  },
+  {
+    slug: "capture",
+    title: "capture",
+    year: "2026",
+    description:
+      "a windows desktop experiment for user-triggered region capture and AI-assisted editor input. separates the background app from a status monitor, with pause, cancellation, and offline rehearsal controls. screenshots are submitted only on an explicit action.",
+    tech: ["python", "windows", "desktop automation", "vision APIs"],
+    privateSource: true,
+  },
+  {
+    slug: "aaadatagatherer",
+    title: "aaa data gatherer",
+    year: "2026",
+    description:
+      "turns video links into compact evidence packs: word-timed transcripts, scene cuts, motion labels, pacing metrics, and timestamped frame sheets. exports PDF, markdown, and JSON for analysis; prepares evidence rather than running a local LLM.",
+    tech: ["python", "whisper", "yt-dlp", "optical flow", "pdf"],
+    href: "https://github.com/VillAlfonso/AAADataGatherer",
+  },
+  {
+    slug: "aaavidtoimages",
+    title: "aaa vid to images",
+    year: "2026",
+    description:
+      "a video-to-frame workbench with configurable extraction rate and image quality, saved job history, and a browsable frame gallery. perceptual hashing helps remove near-duplicate frames before further analysis.",
+    tech: ["python", "flask", "ffmpeg", "yt-dlp", "pillow", "imagehash"],
+    href: "https://github.com/VillAlfonso/AAAvidtoimages",
+  },
+  {
+    slug: "reanimen",
+    title: "reanimen",
+    year: "2026",
+    description:
+      "a script-to-video editor built around a black canvas, sourced images and GIFs, word-synced captions, and narration. edit each scene, optionally convert the voice locally with RVC, then render an MP4 through remotion.",
+    tech: ["remotion", "python", "edge-tts", "rvc", "video editing"],
+    privateSource: true,
+  },
+  {
     slug: "this-site",
     title: "this website",
     year: "2026",
     description:
       "the grid-paper portfolio you are reading. black, white, and a lot of springs.",
-    tech: ["javascript", "claude"],
-    featured: true,
+    tech: ["typescript", "react", "next.js", "tailwind css", "motion"],
+    href: "https://github.com/VillAlfonso/.landing",
   },
 ];

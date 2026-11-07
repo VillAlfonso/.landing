@@ -18,14 +18,32 @@ export type Badge = {
   image?: string;
 };
 
+export const achievements = [
+  {
+    title: "Computer Systems Servicing NC II",
+    issuer: "TESDA",
+    date: "October 31, 2026",
+    summary: "National Certificate II in computer systems installation and configuration, network and server setup, and systems and network maintenance.",
+    note: "Valid until October 30, 2031",
+  },
+  {
+    title: "15th IT Skills Olympics",
+    issuer: "University of Makati",
+    date: "November 4, 2026",
+    summary: "Represented LSPU San Pablo in the Python Programming category. Certificate of Participation.",
+    note: "School representative · Python Programming",
+  },
+];
+
 export const education: Education[] = [
   {
     years: "2023 — 2027",
     school: "Laguna State Polytechnic University",
-    program: "higher education",
+    program: "BS Information Technology — Web and Mobile Application Development",
+    note: "4th year · San Pablo City Campus · expected graduation 2027",
   },
   {
-    years: "2017 — 2022",
+    years: "2017 — 2023",
     school: "Liceo De San Pablo",
     program: "secondary education",
     note: "consistent honors",

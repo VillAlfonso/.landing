@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://quert.site"),
   title: "Quert Alfonso M. Villafuerte — portfolio",
   description:
-    "code, motion & machine-made pictures. the grid-paper portfolio of Quert Alfonso M. Villafuerte.",
+    "Web applications, local AI experiments, and creative tools by Quert Alfonso M. Villafuerte — BSIT WMAD student, TESDA NC II holder, and Python Programming school representative.",
   alternates: { canonical: "/" },
 };
 
