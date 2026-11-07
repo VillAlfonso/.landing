@@ -1,0 +1,180 @@
+{
+  "slug": "aaaflow",
+  "name": "aaaflow studio",
+  "tagline": "local AI · video production",
+  "summary": "a local-first video studio connecting scripts, voices, generated visuals, and final video assembly on a consumer gpu. a voice-first pipeline with channel personas shaped by prompts; two resulting videos are published on youtube.",
+  "problem": "Bring the steps of making a narrated video into one workspace: script, voice, visuals, editing, preview, and export. The timeline follows the actual narration so scenes stay aligned with what is being said.",
+  "status": "active",
+  "year": 2026,
+  "featured": true,
+  "tech": [
+    "python",
+    "fastapi",
+    "javascript",
+    "comfyui",
+    "wan 2.2",
+    "qwen3-tts",
+    "krea2",
+    "ace-step",
+    "remotion",
+    "whisper",
+    "real-esrgan",
+    "ffmpeg",
+    "ollama"
+  ],
+  "topics": [
+    "local AI",
+    "video production"
+  ],
+  "highlights": [
+    "Voice-led timing: Generate narration per scene and use the resulting audio duration to drive the timeline, instead of forcing speech into a fixed scene length.",
+    "Connected creative tools: Combine local speech and image generation, ComfyUI workflows, animation, and final video assembly in a browser-based studio.",
+    "Channel identity: Channel personas, visual prompts, and editing presets help keep a project's outputs consistent. Voice Lab and per-scene editing provide room to refine the result."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/AAAFlow",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/aaaflow",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/01-hub-brand.mp4",
+      "poster": "../../public/showcase/media/aaaflow/01-hub-brand.png",
+      "role": "hero",
+      "caption": "Pressing 'Brand preview' on a channel card: the channel's whole identity, plus its edit & sound grammar, rendered from one fixed krea2 node graph"
+    },
+    {
+      "type": "image",
+      "src": "../../public/showcase/media/aaaflow/pipeline-diagram.png",
+      "group": "The architecture",
+      "caption": "The whole machine: the nine-step production pipeline, and the learning loop that grows new channels from studied references"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/02-autopilot.mp4",
+      "poster": "../../public/showcase/media/aaaflow/02-autopilot.png",
+      "group": "The app, driven live",
+      "caption": "Typing an idea into Autopilot. From here the local LLM researches the story, writes the script in this channel's voice, and produces the whole video; we stop just short of pressing go"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/03-script-voice.mp4",
+      "poster": "../../public/showcase/media/aaaflow/03-script-voice.png",
+      "group": "The app, driven live",
+      "caption": "A real project's storyboard, then stepping into Voice: the one-take narration that every scene's timing is aligned to"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/04-images-animate.mp4",
+      "poster": "../../public/showcase/media/aaaflow/04-images-animate.png",
+      "group": "The app, driven live",
+      "caption": "The generated stills for every scene, then Animate: which scenes earned real Wan 2.2 motion clips"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/05-edit-grammar.mp4",
+      "poster": "../../public/showcase/media/aaaflow/05-edit-grammar.png",
+      "group": "The app, driven live",
+      "caption": "The Edit plan: every transition, sound cue and word-synced emphasis the auto-director chose, scene by scene, from the effects grammar"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/06-preview-play.mp4",
+      "poster": "../../public/showcase/media/aaaflow/06-preview-play.png",
+      "group": "The app, driven live",
+      "caption": "Pressing play on a finished render inside the studio. This 3-minute video was produced end to end by the pipeline"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/07-publish-youtube.mp4",
+      "poster": "../../public/showcase/media/aaaflow/07-publish-youtube.png",
+      "group": "The app, driven live",
+      "caption": "Publish for a live video: the SEO package, typeset thumbnail variants, Shorts cutter, and real YouTube upload rows with on-platform status"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/08-settings-storage.mp4",
+      "poster": "../../public/showcase/media/aaaflow/08-settings-storage.png",
+      "group": "The app, driven live",
+      "caption": "Settings: the editable effects-grammar dictionary, then pressing 'Scan disk' and watching the janitor walk the model folders live"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/09-gatherer-queue.mp4",
+      "poster": "../../public/showcase/media/aaaflow/09-gatherer-queue.png",
+      "group": "The app, driven live",
+      "caption": "The Data Gatherer that turns reference videos into evidence packs, and the job queue that serializes every model on one GPU"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/10-voicelab-training.mp4",
+      "poster": "../../public/showcase/media/aaaflow/10-voicelab-training.png",
+      "group": "The app, driven live",
+      "caption": "Voice Lab, where narrator voices are designed in words or cloned from clean speech, then the LoRA Training page"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/excerpt-fathom.mp4",
+      "poster": "../../public/showcase/media/aaaflow/excerpt-fathom.png",
+      "group": "Finished output",
+      "caption": "Fathom: 'The Kid Who Took Over Twitter', investigative documentary style, produced entirely by the pipeline"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/excerpt-menagerie.mp4",
+      "poster": "../../public/showcase/media/aaaflow/excerpt-menagerie.png",
+      "group": "Finished output",
+      "caption": "The Midnight Menagerie: from the 10-minute, 141-scene film in the channel's dark-carnival style, with its designed narrator"
+    },
+    {
+      "type": "video",
+      "src": "../../public/showcase/media/aaaflow/excerpt-unruly.mp4",
+      "poster": "../../public/showcase/media/aaaflow/excerpt-unruly.png",
+      "group": "Finished output",
+      "caption": "Unruly History: hand-inked comic history, a completely different look from the same pipeline"
+    },
+    {
+      "type": "image",
+      "src": "../../public/showcase/media/aaaflow/brand-menagerie-banner.jpg",
+      "group": "Brand identity, generated in-app",
+      "caption": "The Midnight Menagerie's banner, from the channel's own art direction"
+    },
+    {
+      "type": "image",
+      "src": "../../public/showcase/media/aaaflow/brand-menagerie-thumb.jpg",
+      "group": "Brand identity, generated in-app",
+      "caption": "A Menagerie thumbnail model"
+    },
+    {
+      "type": "image",
+      "src": "../../public/showcase/media/aaaflow/brand-unruly-banner.jpg",
+      "group": "Brand identity, generated in-app",
+      "caption": "Unruly History's banner: same generator, completely different channel DNA"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Start with a storyboard and channel direction.\n- Generate narration and build the audio-led timeline.\n- Generate or refine visuals and edit the scene sequence.\n- Preview the assembled video and prepare the final export."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "A JavaScript interface talks to Python/FastAPI services that coordinate model inference, background jobs, project storage, and media processing. The larger workflow integrates ComfyUI, local models, Remotion, and FFmpeg."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "A local-first personal production tool with two published videos. Model setup, GPU memory, and generation time affect the experience; online publishing and external services are separate from local inference."
+    }
+  ],
+  "generated_at": "2026-11-07",
+  "generated_by": "showcase-kit + portfolio curation"
+}

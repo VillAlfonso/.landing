@@ -1,0 +1,70 @@
+{
+  "slug": "prosody",
+  "name": "prosody",
+  "tagline": "creative tools · speech & audio",
+  "summary": "a browser-based speech studio with inline emotion tags, pitch and pacing controls, reusable presets, and a segment timeline. edge-TTS supplies the online base voice; an optional local RVC stage handles voice conversion.",
+  "problem": "Give a script more controllable delivery through inline emotion tags and reusable voice settings, with an optional voice-conversion stage.",
+  "status": "active",
+  "year": 2026,
+  "featured": false,
+  "tech": [
+    "python",
+    "fastapi",
+    "javascript",
+    "edge-tts",
+    "rvc",
+    "ffmpeg"
+  ],
+  "topics": [
+    "creative tools",
+    "speech & audio"
+  ],
+  "highlights": [
+    "Emotion-tagged scripts: Split text into segments using tags and highlight each segment in the editor. Untagged passages use a default emotion.",
+    "Prosody Lab: Tune pitch, speed, and volume, preview the result, and save the configuration as a reusable emotion preset.",
+    "Audio timeline: Generate segment audio, follow it on a timeline, and export the combined result. Optional RVC conversion changes voice character."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/Prosody",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/prosody",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-overview.png",
+      "caption": "Emotion-tagged sample script and delivery controls in the running Prosody studio.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "media/02-tone-editor.png",
+      "caption": "Tone Editor before synthesis, showing the pitch, loudness, and pacing editing workflow.",
+      "role": "shot"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Write a script with emotion tags.\n- Tune and preview the delivery presets.\n- Choose the voice and optionally enable an RVC model.\n- Generate, review the timeline, and download audio."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "FastAPI serves a plain JavaScript interface. The pipeline parses segments, calls Edge-TTS, optionally applies local RVC, then uses FFmpeg for audio processing and export. JSON files persist settings."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "The base voice uses the online Edge-TTS service. RVC runs locally and requires a compatible model and environment; emotion tags control configured delivery parameters."
+    }
+  ],
+  "generated_at": "2026-11-07",
+  "generated_by": "showcase-kit + portfolio curation"
+}

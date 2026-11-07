@@ -1,0 +1,70 @@
+{
+  "slug": "aaavidtoimages",
+  "name": "aaa vid to images",
+  "tagline": "media utilities \u00b7 frame extraction",
+  "summary": "a video-to-frame workbench with configurable extraction rate and image quality, saved job history, and a browsable frame gallery. perceptual hashing helps remove near-duplicate frames before further analysis.",
+  "problem": "Make video frames easier to collect and browse for subsequent analysis, with control over how frequently images are extracted and how much duplication is retained.",
+  "status": "active",
+  "year": 2026,
+  "featured": false,
+  "tech": [
+    "python",
+    "flask",
+    "ffmpeg",
+    "yt-dlp",
+    "pillow",
+    "imagehash"
+  ],
+  "topics": [
+    "media utilities",
+    "frame extraction"
+  ],
+  "highlights": [
+    "Configurable extraction: Choose extraction rate and output quality to balance the number of images against the level of detail needed.",
+    "Frame gallery: Browse extracted frames in the web interface and return to saved jobs through the job history.",
+    "Near-duplicate filtering: Use perceptual hashes to help remove visually similar frames before further review."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/AAAvidtoimages",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/aaavidtoimages",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-overview.png",
+      "caption": "Frame extraction controls and the saved sample job from the repository.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "media/02-gallery.png",
+      "caption": "Full-size frame viewer showing an image extracted from the repository sample video.",
+      "role": "shot"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Provide a video source.\n- Choose the frame rate and quality settings.\n- Extract images and filter similar frames.\n- Browse the resulting gallery or revisit a saved job."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "A Flask application orchestrates yt-dlp and FFmpeg. Pillow and imagehash support image handling and perceptual comparisons."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "A frame-preparation utility rather than a semantic video-understanding model. Sampling and similarity thresholds determine which visual changes are retained."
+    }
+  ],
+  "generated_at": "2026-11-07",
+  "generated_by": "showcase-kit + portfolio curation"
+}

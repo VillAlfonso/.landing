@@ -1,0 +1,235 @@
+{
+  "aaadatagatherer": [
+    {
+      "type": "image",
+      "src": "/showcase/media/aaadatagatherer/01-overview.png",
+      "caption": "Analysis configuration and empty job queue in the running app; no analysis job has been submitted.",
+      "role": "hero"
+    }
+  ],
+  "aaaflow": [
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/01-hub-brand.mp4",
+      "poster": "/showcase/media/aaaflow/01-hub-brand.png",
+      "role": "hero",
+      "caption": "Pressing 'Brand preview' on a channel card: the channel's whole identity, plus its edit & sound grammar, rendered from one fixed krea2 node graph"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/aaaflow/pipeline-diagram.png",
+      "group": "The architecture",
+      "caption": "The whole machine: the nine-step production pipeline, and the learning loop that grows new channels from studied references"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/02-autopilot.mp4",
+      "poster": "/showcase/media/aaaflow/02-autopilot.png",
+      "group": "The app, driven live",
+      "caption": "Typing an idea into Autopilot. From here the local LLM researches the story, writes the script in this channel's voice, and produces the whole video; we stop just short of pressing go"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/03-script-voice.mp4",
+      "poster": "/showcase/media/aaaflow/03-script-voice.png",
+      "group": "The app, driven live",
+      "caption": "A real project's storyboard, then stepping into Voice: the one-take narration that every scene's timing is aligned to"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/04-images-animate.mp4",
+      "poster": "/showcase/media/aaaflow/04-images-animate.png",
+      "group": "The app, driven live",
+      "caption": "The generated stills for every scene, then Animate: which scenes earned real Wan 2.2 motion clips"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/05-edit-grammar.mp4",
+      "poster": "/showcase/media/aaaflow/05-edit-grammar.png",
+      "group": "The app, driven live",
+      "caption": "The Edit plan: every transition, sound cue and word-synced emphasis the auto-director chose, scene by scene, from the effects grammar"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/06-preview-play.mp4",
+      "poster": "/showcase/media/aaaflow/06-preview-play.png",
+      "group": "The app, driven live",
+      "caption": "Pressing play on a finished render inside the studio. This 3-minute video was produced end to end by the pipeline"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/07-publish-youtube.mp4",
+      "poster": "/showcase/media/aaaflow/07-publish-youtube.png",
+      "group": "The app, driven live",
+      "caption": "Publish for a live video: the SEO package, typeset thumbnail variants, Shorts cutter, and real YouTube upload rows with on-platform status"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/08-settings-storage.mp4",
+      "poster": "/showcase/media/aaaflow/08-settings-storage.png",
+      "group": "The app, driven live",
+      "caption": "Settings: the editable effects-grammar dictionary, then pressing 'Scan disk' and watching the janitor walk the model folders live"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/09-gatherer-queue.mp4",
+      "poster": "/showcase/media/aaaflow/09-gatherer-queue.png",
+      "group": "The app, driven live",
+      "caption": "The Data Gatherer that turns reference videos into evidence packs, and the job queue that serializes every model on one GPU"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/10-voicelab-training.mp4",
+      "poster": "/showcase/media/aaaflow/10-voicelab-training.png",
+      "group": "The app, driven live",
+      "caption": "Voice Lab, where narrator voices are designed in words or cloned from clean speech, then the LoRA Training page"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/excerpt-fathom.mp4",
+      "poster": "/showcase/media/aaaflow/excerpt-fathom.png",
+      "group": "Finished output",
+      "caption": "Fathom: 'The Kid Who Took Over Twitter', investigative documentary style, produced entirely by the pipeline"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/excerpt-menagerie.mp4",
+      "poster": "/showcase/media/aaaflow/excerpt-menagerie.png",
+      "group": "Finished output",
+      "caption": "The Midnight Menagerie: from the 10-minute, 141-scene film in the channel's dark-carnival style, with its designed narrator"
+    },
+    {
+      "type": "video",
+      "src": "/showcase/media/aaaflow/excerpt-unruly.mp4",
+      "poster": "/showcase/media/aaaflow/excerpt-unruly.png",
+      "group": "Finished output",
+      "caption": "Unruly History: hand-inked comic history, a completely different look from the same pipeline"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/aaaflow/brand-menagerie-banner.jpg",
+      "group": "Brand identity, generated in-app",
+      "caption": "The Midnight Menagerie's banner, from the channel's own art direction"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/aaaflow/brand-menagerie-thumb.jpg",
+      "group": "Brand identity, generated in-app",
+      "caption": "A Menagerie thumbnail model"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/aaaflow/brand-unruly-banner.jpg",
+      "group": "Brand identity, generated in-app",
+      "caption": "Unruly History's banner: same generator, completely different channel DNA"
+    }
+  ],
+  "aaavidtoimages": [
+    {
+      "type": "image",
+      "src": "/showcase/media/aaavidtoimages/01-overview.png",
+      "caption": "Frame extraction controls and the saved sample job from the repository.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/aaavidtoimages/02-gallery.png",
+      "caption": "Full-size frame viewer showing an image extracted from the repository sample video.",
+      "role": "shot"
+    }
+  ],
+  "ark": [
+    {
+      "type": "image",
+      "src": "/showcase/media/ark/02-scan.png",
+      "caption": "Read-only scan of showcase-kit: file categories, Git state, and archive planning.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/ark/01-overview.png",
+      "caption": "Ark control room before a scan, with separate build and verification actions.",
+      "role": "shot"
+    }
+  ],
+  "capture": [
+    {
+      "type": "image",
+      "src": "/showcase/media/capture/01-core-demo.png",
+      "caption": "Actual offline core-module output: selection normalization, character stepping, and rejecting a stale response after reset. Styled terminal presentation; no API calls or input hooks.",
+      "role": "hero"
+    }
+  ],
+  "prosody": [
+    {
+      "type": "image",
+      "src": "/showcase/media/prosody/01-overview.png",
+      "caption": "Emotion-tagged sample script and delivery controls in the running Prosody studio.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/prosody/02-tone-editor.png",
+      "caption": "Tone Editor before synthesis, showing the pitch, loudness, and pacing editing workflow.",
+      "role": "shot"
+    }
+  ],
+  "reanimen": [
+    {
+      "type": "image",
+      "src": "/showcase/media/reanimen/01-overview.png",
+      "caption": "Running Reanimen editor with its bundled sample script and scene controls, before narration or rendering.",
+      "role": "hero"
+    }
+  ],
+  "revelator": [
+    {
+      "type": "image",
+      "src": "/showcase/media/revelator/01-overview.png",
+      "caption": "Authentication screen in the running Revelator frontend; no account data is shown.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/revelator/02-register.png",
+      "caption": "Account-registration form before entering any personal information.",
+      "role": "shot"
+    }
+  ],
+  "showcase-kit": [
+    {
+      "type": "image",
+      "src": "/showcase/media/showcase-kit/01-build.png",
+      "caption": "Actual showcase-kit build output for this portfolio, presented as a terminal capture.",
+      "role": "hero"
+    }
+  ],
+  "this-site": [
+    {
+      "type": "image",
+      "src": "/showcase/media/this-site/01-home.png",
+      "caption": "The live portfolio homepage before the gallery update.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/this-site/02-projects.png",
+      "caption": "The project index before screenshot thumbnails were added.",
+      "role": "shot"
+    }
+  ],
+  "ytauto": [
+    {
+      "type": "image",
+      "src": "/showcase/media/ytauto/01-overview.png",
+      "caption": "Content-planning interface before generation: title ideas, route mapping, and staged research.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/ytauto/02-info.png",
+      "caption": "In-app explanation of the analytics workflow and engagement proxy.",
+      "role": "shot"
+    }
+  ]
+}

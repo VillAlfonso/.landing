@@ -1,0 +1,69 @@
+{
+  "slug": "ytauto",
+  "name": "ytauto",
+  "tagline": "web application · trend analytics",
+  "summary": "a youtube trend dashboard pairing a next.js frontend with a fastapi backend. server-side caching and an engagement proxy help compare candidate videos without claiming access to private retention data. automated video rendering is on the roadmap.",
+  "problem": "Compare potential YouTube topics through a dashboard that gathers public video signals and scores candidates without pretending to know private audience-retention data.",
+  "status": "active",
+  "year": 2026,
+  "featured": false,
+  "tech": [
+    "typescript",
+    "next.js",
+    "python",
+    "fastapi",
+    "youtube data api"
+  ],
+  "topics": [
+    "web application",
+    "trend analytics"
+  ],
+  "highlights": [
+    "Trend dashboard: Bring candidate videos and their public performance signals into a Next.js interface.",
+    "Engagement proxy: Combine view velocity, engagement rate, and an age penalty into a proxy score for comparing candidates.",
+    "Backend caching: Cache and aggregate requests on the server so the browser does not query YouTube directly."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/YTauto",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/ytauto",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-overview.png",
+      "caption": "Content-planning interface before generation: title ideas, route mapping, and staged research.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "media/02-info.png",
+      "caption": "In-app explanation of the analytics workflow and engagement proxy.",
+      "role": "shot"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Retrieve and cache public video data.\n- Filter candidates and calculate proxy scores.\n- Compare candidates in the dashboard.\n- Use the signals to guide further topic research."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "A Next.js frontend is paired with a FastAPI backend for ingestion, caching, and scoring. The repository separates analytics from future rendering work."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "Trend analytics and proxy scoring are implemented. Historical storage, automated video rendering, and a mobile wrapper are roadmap items; the score is not an audience-retention measurement."
+    }
+  ],
+  "generated_at": "2026-11-07",
+  "generated_by": "showcase-kit + portfolio curation"
+}

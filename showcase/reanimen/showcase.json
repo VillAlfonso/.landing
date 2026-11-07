@@ -1,0 +1,63 @@
+{
+  "slug": "reanimen",
+  "name": "reanimen",
+  "tagline": "creative tools · script-to-video",
+  "summary": "a script-to-video editor built around a black canvas, sourced images and GIFs, word-synced captions, and narration. edit each scene, optionally convert the voice locally with RVC, then render an MP4 through remotion.",
+  "problem": "Build narrated videos from a script using a deliberately simple black canvas, sourced images and GIF cutaways, and captions synchronized to the spoken words.",
+  "status": "active",
+  "year": 2026,
+  "featured": false,
+  "tech": [
+    "remotion",
+    "python",
+    "edge-tts",
+    "rvc",
+    "video editing"
+  ],
+  "topics": [
+    "creative tools",
+    "script-to-video"
+  ],
+  "highlights": [
+    "Scene-based editing: Build scenes from a script, then adjust layouts, cuts, motion, caption position, and visual style individually.",
+    "Media sourcing: Derive search terms from the narration and find images or GIFs through media providers, retaining attribution in project data.",
+    "Narration & rendering: Generate scene narration with word boundaries for captions, optionally convert its voice through RVC, and render an MP4 with Remotion."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/Reanimen",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/reanimen",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-overview.png",
+      "caption": "Running Reanimen editor with its bundled sample script and scene controls, before narration or rendering.",
+      "role": "hero"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Paste the script and build scenes.\n- Review sourced images and GIFs.\n- Generate narration and tune scene presentation.\n- Render and download the finished MP4."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "The editor connects Remotion rendering with a Python Edge-TTS bridge. Optional local RVC conversion preserves timing, while cached audio avoids unnecessary regeneration."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "Edge-TTS and media search require online services; optional RVC inference runs locally. Sourced media still needs a rights review before publication."
+    }
+  ],
+  "generated_at": "2026-11-07",
+  "generated_by": "showcase-kit + portfolio curation"
+}

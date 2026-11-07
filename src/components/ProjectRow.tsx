@@ -2,6 +2,7 @@ import type { Project } from "@/data/projects";
 import Link from "next/link";
 import TechChip from "./TechChip";
 import { SquiggleUnderline } from "./doodles";
+import showcaseMedia from "@/data/showcaseMedia.json";
 
 export default function ProjectRow({
   project,
@@ -10,13 +11,20 @@ export default function ProjectRow({
   project: Project;
   index: number;
 }) {
+  const media = (showcaseMedia as Record<string, { src: string; poster?: string; role?: string }[]>)[project.slug] ?? [];
+  const cover = media.find((item) => item.role === "hero") ?? media[0];
+  const preview = cover && (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={cover.poster ?? cover.src} alt={`${project.title} preview`} loading="lazy" className="aspect-[8/5] w-full rounded-md border border-ink/15 bg-ink/5 object-cover object-top" />
+  );
   const inner = (
-    <article className="group grid grid-cols-[40px_1fr] gap-4 border-t border-ink/10 py-7 md:grid-cols-[64px_1fr_auto] md:gap-6">
+    <article className="group grid grid-cols-[40px_minmax(0,1fr)] gap-4 border-t border-ink/10 py-7 md:grid-cols-[64px_minmax(0,1fr)_240px] md:gap-6">
       <div className="pt-1 font-hand text-xl text-ink/30">
         {String(index + 1).padStart(2, "0")}
       </div>
 
       <div>
+        <div className="mb-5 md:hidden">{preview}</div>
         <div className="flex flex-wrap items-baseline gap-x-3">
           <h3 className="relative inline-block font-display text-xl uppercase tracking-wide md:text-2xl">
             {project.title}
@@ -47,6 +55,7 @@ export default function ProjectRow({
       </div>
 
       <div className="hidden flex-col items-end justify-between md:flex">
+        <div className="mb-3 w-full">{preview}</div>
         <span className="text-[12px] text-ink/40">{project.year}</span>
         {project.href ? (
           <span

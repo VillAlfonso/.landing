@@ -1,0 +1,71 @@
+{
+  "slug": "revelator",
+  "name": "revelator",
+  "tagline": "institutional capstone · web & mobile",
+  "summary": "my institutional capstone: a web and mobile-capable document screening app for CCJE personnel at LSPU San Pablo. react meets fastapi, authenticated accounts, scan history, and gemini-assisted image analysis for human review.",
+  "problem": "Support document screening for CCJE personnel at LSPU San Pablo with an application that brings image submission, assisted analysis, and review history together.",
+  "status": "active",
+  "year": 2026,
+  "featured": false,
+  "tech": [
+    "react",
+    "vite",
+    "capacitor",
+    "python",
+    "fastapi",
+    "sqlite",
+    "gemini"
+  ],
+  "topics": [
+    "institutional capstone",
+    "web & mobile"
+  ],
+  "highlights": [
+    "Document screening: Submit document images for Gemini-assisted analysis, with the result supporting a person's review.",
+    "Accounts & history: Authenticated access and stored scan history keep document screening organized across sessions.",
+    "Web & mobile foundation: A React interface built with Vite and Capacitor supports a shared application foundation for browser and mobile use."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/Revelator",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/revelator",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-overview.png",
+      "caption": "Authentication screen in the running Revelator frontend; no account data is shown.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "media/02-register.png",
+      "caption": "Account-registration form before entering any personal information.",
+      "role": "shot"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Sign in to an account.\n- Submit a document image for screening.\n- Review the assisted analysis.\n- Return to previous scans through the stored history."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "React/Vite provides the interface, while FastAPI handles backend requests. SQLAlchemy and SQLite support persistence, and Gemini supplies the image-analysis integration."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "An institutional capstone and screening aid. Analysis is intended for human review and does not establish document authenticity by itself."
+    }
+  ],
+  "generated_at": "2026-11-07",
+  "generated_by": "showcase-kit + portfolio curation"
+}

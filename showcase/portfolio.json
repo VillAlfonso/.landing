@@ -1,0 +1,21 @@
+{
+  "owner": {
+    "name": "Quert Alfonso M. Villafuerte",
+    "role": "creative developer",
+    "bio": "code, motion & machine-made pictures. b. 2004. i build things end to end \u2014 usually on one gpu and a lot of grid paper.",
+    "links": [
+      {
+        "label": "\u2190 main portfolio",
+        "url": "/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/VillAlfonso"
+      },
+      {
+        "label": "Email",
+        "url": "mailto:quertgamer@gmail.com"
+      }
+    ]
+  }
+}

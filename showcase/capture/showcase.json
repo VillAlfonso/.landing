@@ -1,0 +1,62 @@
+{
+  "slug": "capture",
+  "name": "capture",
+  "tagline": "desktop experiment · Windows automation",
+  "summary": "a windows desktop experiment for user-triggered region capture and AI-assisted editor input. separates the background app from a status monitor, with pause, cancellation, and offline rehearsal controls. screenshots are submitted only on an explicit action.",
+  "problem": "Explore a user-controlled workflow for selecting a screen region, requesting AI assistance, and replaying generated text into an editor, with explicit pause and cancellation controls.",
+  "status": "experiment",
+  "year": 2026,
+  "featured": false,
+  "tech": [
+    "python",
+    "windows",
+    "desktop automation",
+    "vision APIs"
+  ],
+  "topics": [
+    "desktop experiment",
+    "Windows automation"
+  ],
+  "highlights": [
+    "Explicit submission: Select a region first, then submit it through a separate action. Capturing a region does not itself send an API request.",
+    "Separate status monitor: The background application owns capture and input handling; a separate monitor reports state without taking over its lifecycle.",
+    "Rehearsal & cancellation: An offline rehearsal mode exercises the workflow with a fixed snippet. Pause, restart, and cancellation controls manage local state."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/Capture",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/capture",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-core-demo.png",
+      "caption": "Actual offline core-module output: selection normalization, character stepping, and rejecting a stale response after reset. Styled terminal presentation; no API calls or input hooks.",
+      "role": "hero"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Start the app and enable the controls.\n- Select the intended region and explicitly submit it.\n- Review request state in the monitor.\n- Replay, pause, or discard generated editor input."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "Python coordinates Windows input hooks, screen capture, API requests, process ownership, and a separate monitoring process. Local rehearsal avoids live API traffic during workflow checks."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "A Windows-specific experiment. Editor focus, keyboard layouts, and automatic indentation affect replay. Local cancellation discards the answer but cannot undo a request already received by the provider."
+    }
+  ],
+  "generated_at": "2026-11-07",
+  "generated_by": "showcase-kit + portfolio curation"
+}

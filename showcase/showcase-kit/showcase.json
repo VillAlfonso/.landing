@@ -1,0 +1,62 @@
+{
+  "slug": "showcase-kit",
+  "name": "showcase kit",
+  "tagline": "developer tooling · portfolio publishing",
+  "summary": "a reusable kit for turning codebases into portfolio case studies. repository probes, browser captures, structured project data, and a static-site builder bring the work together. the aaaflow showcase on this site was built with it.",
+  "problem": "Turn a codebase into an understandable portfolio entry by combining repository facts, a written explanation, and captured media in a reusable format.",
+  "status": "active",
+  "year": 2026,
+  "featured": false,
+  "tech": [
+    "python",
+    "playwright",
+    "html",
+    "json schema"
+  ],
+  "topics": [
+    "developer tooling",
+    "portfolio publishing"
+  ],
+  "highlights": [
+    "Repository probes: Collect deterministic facts such as languages, dependencies, routes, and Git information to support the project description.",
+    "Browser capture: Use a scripted Playwright tour to record a running application and produce screenshots and clips for the showcase.",
+    "Static publishing: Combine structured showcase entries into a self-contained portfolio with individual project views and responsive light/dark presentation."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/showcase-kit",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/showcase-kit",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-build.png",
+      "caption": "Actual showcase-kit build output for this portfolio, presented as a terminal capture.",
+      "role": "hero"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Inspect the codebase and collect facts.\n- Capture the running application's relevant workflows.\n- Write a structured showcase entry and attach media.\n- Build the static portfolio output."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "Python scripts handle probing, capture, and HTML generation. A JSON schema defines the content format, and the browser-capture step uses Playwright."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "The kit was used for the existing aaaflow showcase on this site. Captures require a running app; static analysis alone cannot demonstrate runtime behavior."
+    }
+  ],
+  "generated_at": "2026-11-07",
+  "generated_by": "showcase-kit + portfolio curation"
+}

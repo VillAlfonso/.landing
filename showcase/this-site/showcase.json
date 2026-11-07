@@ -1,0 +1,69 @@
+{
+  "slug": "this-site",
+  "name": "this website",
+  "tagline": "portfolio · web development",
+  "summary": "the grid-paper portfolio you are reading. black, white, and a lot of springs.",
+  "problem": "Present my projects, skills, and credentials in a portfolio that feels like an engineer's notebook, with enough detail for a recruiter or collaborator to explore the work.",
+  "status": "active",
+  "year": 2026,
+  "featured": false,
+  "tech": [
+    "typescript",
+    "react",
+    "next.js",
+    "tailwind css",
+    "motion"
+  ],
+  "topics": [
+    "portfolio",
+    "web development"
+  ],
+  "highlights": [
+    "Data-driven projects: Shared project data powers the project list, detail pages, technology chips, and credentials toolbox.",
+    "Notebook presentation: A grid-paper background, expressive typography, and brand-colored icons carry across responsive light and dark layouts.",
+    "Inspectable evidence: Project source links, an aaaflow media showcase, and permanently redacted certificate PDFs provide supporting material."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/.landing",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/this-site",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-home.png",
+      "caption": "The live portfolio homepage before the gallery update.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "media/02-projects.png",
+      "caption": "The project index before screenshot thumbnails were added.",
+      "role": "shot"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Browse featured work on the homepage.\n- Open a project to read its workflow and implementation.\n- Explore source code or available demos.\n- Review credentials and contact details."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "Next.js App Router, React, TypeScript, and Tailwind CSS provide the site structure. Motion handles animation, reduced-motion preferences are supported, and GitHub pushes trigger Vercel deployment."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "This is the portfolio itself. Project demonstrations are linked where available; the site does not run the local AI applications on the visitor's device."
+    }
+  ],
+  "generated_at": "2026-11-07",
+  "generated_by": "showcase-kit + portfolio curation"
+}

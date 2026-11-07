@@ -5,6 +5,8 @@ import Reveal from "@/components/Reveal";
 import TechChip from "@/components/TechChip";
 import { projects } from "@/data/projects";
 import { projectDetails } from "@/data/projectDetails";
+import ProjectGallery, { type ShowcaseMedia } from "@/components/ProjectGallery";
+import showcaseMedia from "@/data/showcaseMedia.json";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -23,6 +25,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const detail = projectDetails[slug];
   if (!project || !detail) notFound();
   const source = detail.source ?? project.href;
+  const media = (showcaseMedia as Record<string, ShowcaseMedia[]>)[slug] ?? [];
   const next = projects[(projects.findIndex((p) => p.slug === slug) + 1) % projects.length];
 
   return (
@@ -35,18 +38,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <div className="mt-6 flex flex-wrap gap-2">{project.tech.map((t) => <TechChip key={t} id={t} />)}</div>
         <div className="mt-8 flex flex-wrap gap-3">
           {source && <a href={source} target="_blank" rel="noopener noreferrer" className="rounded border border-ink/25 px-4 py-3 text-[12px] hover:bg-ink/5">source on GitHub ↗</a>}
-          {detail.showcase && <a href={detail.showcase} className="rounded border border-ink/25 px-4 py-3 text-[12px] hover:bg-ink/5">{slug === "aaaflow" ? "full media showcase" : "see the aaaflow example"} →</a>}
+          <a href={`/showcase/index.html#/p/${slug}`} className="rounded border border-ink/25 px-4 py-3 text-[12px] hover:bg-ink/5">full media showcase →</a>
         </div>
       </Reveal>
 
-      {detail.image && <Reveal className="mt-12">
-        <figure className="overflow-hidden rounded-lg border border-ink/20">
-          {detail.video ? <video controls playsInline preload="none" poster={detail.image} aria-label={`${project.title} application demo`} className="aspect-[8/5] w-full bg-black"><source src={detail.video} type="video/mp4" /><a href={detail.video}>Open demo video</a></video> :
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={detail.image} alt={detail.imageAlt ?? project.title} className="w-full" />}
-          <figcaption className="border-t border-ink/15 px-5 py-4 text-[11px] text-ink/55">{detail.imageAlt} · recorded app walkthrough</figcaption>
-        </figure>
-      </Reveal>}
+      {media.length > 0 && <ProjectGallery media={media} title={project.title} />}
 
       <Reveal className="mt-16 grid gap-6 border-t border-ink/15 pt-8 md:grid-cols-[220px_1fr]">
         <h2 className="font-display text-2xl uppercase">why I built it</h2>

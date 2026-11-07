@@ -1,0 +1,63 @@
+{
+  "slug": "aaadatagatherer",
+  "name": "aaa data gatherer",
+  "tagline": "media analysis · evidence preparation",
+  "summary": "turns video links into compact evidence packs: word-timed transcripts, scene cuts, motion labels, pacing metrics, and timestamped frame sheets. exports PDF, markdown, and JSON for analysis; prepares evidence rather than running a local LLM.",
+  "problem": "Condense a video into a portable evidence pack that makes its timing, spoken content, cuts, and movement easier to inspect or pass into a later analysis workflow.",
+  "status": "active",
+  "year": 2026,
+  "featured": false,
+  "tech": [
+    "python",
+    "whisper",
+    "yt-dlp",
+    "optical flow",
+    "pdf"
+  ],
+  "topics": [
+    "media analysis",
+    "evidence preparation"
+  ],
+  "highlights": [
+    "Timed transcripts: Use Whisper word timestamps to connect narration and pauses with the shot timeline.",
+    "Visual & pacing evidence: Detect cuts, estimate motion through optical flow, and summarize cutting pace, speaking pace, and loudness.",
+    "Portable exports: Produce a PDF report with frame sheets alongside Markdown and JSON for reading or further processing."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/AAADataGatherer",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/aaadatagatherer",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-overview.png",
+      "caption": "Analysis configuration and empty job queue in the running app; no analysis job has been submitted.",
+      "role": "hero"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Provide video links and select analysis options.\n- Download media and transcribe the audio.\n- Analyze shots, motion, and pacing.\n- Export a report with timestamped frame sheets."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "Python coordinates yt-dlp, Whisper, video analysis, and report generation. Frame-sampling options balance visual coverage against the size of the evidence pack."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "The tool prepares evidence; v1 does not run a local LLM to interpret it. Transcript and optical-flow outputs are estimates, and denser sampling produces larger reports."
+    }
+  ],
+  "generated_at": "2026-11-07",
+  "generated_by": "showcase-kit + portfolio curation"
+}

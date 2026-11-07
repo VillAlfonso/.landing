@@ -1,0 +1,68 @@
+{
+  "slug": "ark",
+  "name": "ark",
+  "tagline": "developer tooling · backup & recovery",
+  "summary": "a git-aware project archiver that separates code, re-downloadable dependencies, and irreplaceable local files. bundles history, preserves uncommitted work, and verifies backups with SHA-256 manifests. python standard library, with a web UI and MCP tools.",
+  "problem": "Large project folders mix source code, replaceable dependencies, and files that cannot be downloaded again. Ark organizes those differences into a reviewable archive before a project is removed or moved.",
+  "status": "active",
+  "year": 2026,
+  "featured": false,
+  "tech": [
+    "python",
+    "git",
+    "sha-256",
+    "mcp"
+  ],
+  "topics": [
+    "developer tooling",
+    "backup & recovery"
+  ],
+  "highlights": [
+    "Git-aware preservation: Save repository history as a Git bundle and preserve uncommitted work as a patch. Detect nested repositories and problematic gitlinks.",
+    "File classification: Separate re-downloadable caches and dependencies from locally generated data, outputs, and other irreplaceable files. Ambiguous items are saved and flagged.",
+    "Integrity checks: SHA-256 manifests verify the archive after creation or transport, with restore hints explaining what needs to be fetched again."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/ark",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/ark",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/02-scan.png",
+      "caption": "Read-only scan of showcase-kit: file categories, Git state, and archive planning.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "media/01-overview.png",
+      "caption": "Ark control room before a scan, with separate build and verification actions.",
+      "role": "shot"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Scan the project and review its classification.\n- Inspect or adjust the archive plan.\n- Build the archive with history, patches, and preserved files.\n- Verify the archive and review the restoration checklist."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "Python standard-library tools power the CLI, web interface, and MCP server. The archive includes a runbook, restore hints, classification plan, and integrity manifests."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "Classification uses heuristics and Git information. Review the plan before deleting source files; Ark creates a local archive and does not upload it or download replacement dependencies."
+    }
+  ],
+  "generated_at": "2026-11-07",
+  "generated_by": "showcase-kit + portfolio curation"
+}
