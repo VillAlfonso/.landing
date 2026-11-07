@@ -8,6 +8,8 @@ export type Education = {
   years: string;
   school: string;
   program: string;
+  logo?: string;
+  logoAlt?: string;
   note?: string;
 };
 
@@ -52,12 +54,16 @@ export const education: Education[] = [
   {
     years: "2023 — 2027",
     school: "Laguna State Polytechnic University",
+    logo: "/education/lspu.png",
+    logoAlt: "Laguna State Polytechnic University seal",
     program: "BS Information Technology — Web and Mobile Application Development",
     note: "4th year · San Pablo City Campus · expected graduation 2027",
   },
   {
     years: "2017 — 2023",
     school: "Liceo De San Pablo",
+    logo: "/education/san-pablo-diocesan-schools.png",
+    logoAlt: "San Pablo Diocesan Catholic Schools System seal",
     program: "secondary education",
     note: "consistent honors",
   },

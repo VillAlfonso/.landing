@@ -1,4 +1,4 @@
-import { simpleIconPaths, doodleIcons, iconColors } from "@/lib/icons";
+import { simpleIconPaths, doodleIcons, iconColors, fallbackIcon } from "@/lib/icons";
 
 /**
  * Renders a stack tool's mark. Brand color by default — the page is
@@ -29,7 +29,7 @@ export default function StackIcon({
       </svg>
     );
   }
-  const Doodle = doodleIcons[id];
+  const Doodle = doodleIcons[id] ?? fallbackIcon;
   if (Doodle) {
     return (
       <span className={`block ${className}`} style={style} aria-hidden="true">

@@ -2,7 +2,7 @@
   "slug": "quantumnquandary",
   "name": "quantumnquandary",
   "tagline": "game development · console strategy",
-  "summary": "a C# console duel about charging, defending, and reading your opponent. six actions, single-player and local two-player modes, and hand-built ASCII battle animations. the browser recreation reuses the original artwork.",
+  "summary": "originally a purely terminal-based C# game: no graphical interface or game engine, just text, keyboard input, and ASCII animation. a duel about charging, defending, and reading your opponent. six actions, single-player and local two-player modes, and hand-built ASCII battle animations. the browser recreation reuses the original artwork.",
   "problem": "Expand rock-paper-scissors into a duel where resource management matters: save charges, predict an attack, or spend them on a decisive counter.",
   "status": "shipped",
   "year": 2023,
@@ -69,7 +69,7 @@
     },
     {
       "heading": "Under the hood & original credits",
-      "body": "Originally a C# console project, Final-Project-ITEC-102 (2023). Quert Alfonso M. Villafuerte is credited for player-vs-player, game mechanics, front-end game creation, and animation; Riz Ivan G. Verana for menus; Angelo S. Averion for single-player and menu design. The browser port separates the action rules, state machine, and extracted artwork."
+      "body": "Originally built entirely as a terminal game in C# — no graphical user interface or game engine. All visuals were text and ASCII characters printed to the console, with keyboard input. The original project is Final-Project-ITEC-102 (2023). Quert Alfonso M. Villafuerte is credited for player-vs-player, game mechanics, front-end game creation, and animation; Riz Ivan G. Verana for menus; Angelo S. Averion for single-player and menu design. The browser port separates the action rules, state machine, and extracted artwork."
     },
     {
       "heading": "Scope & browser adaptations",

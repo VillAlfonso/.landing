@@ -149,7 +149,7 @@ export const projects: Project[] = [
     slug: "quantumnquandary",
     title: "quantumnquandary",
     year: "2023",
-    description: "a C# console duel about charging, defending, and reading your opponent. six actions, single-player and local two-player modes, and hand-built ASCII battle animations. the browser recreation reuses the original artwork.",
+    description: "originally a purely terminal-based C# game: no graphical interface or game engine, just text, keyboard input, and ASCII animation. a duel about charging, defending, and reading your opponent. six actions, single-player and local two-player modes, and hand-built ASCII battle animations. the browser recreation reuses the original artwork.",
     tech: ["c#", "console application", "ascii animation", "javascript", "html", "css"],
     href: "https://github.com/VillAlfonso/.landing/tree/master/public/games/quantumnquandary",
     playable: true,

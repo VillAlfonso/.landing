@@ -78,7 +78,12 @@ export default function CredentialsPage() {
               className="grid grid-cols-1 gap-1 border-t border-ink/10 py-6 sm:grid-cols-[140px_1fr] sm:gap-6"
             >
               <div className="pt-1 text-[12px] text-ink/40">{e.years}</div>
-              <div>
+              <div className="flex items-start gap-4">
+                {e.logo && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={e.logo} alt={e.logoAlt ?? `${e.school} logo`} width={72} height={72} className="h-14 w-14 shrink-0 rounded-full bg-white object-contain p-0.5 sm:h-[72px] sm:w-[72px]" loading="lazy" />
+                )}
+                <div>
                 <div className="font-display text-lg uppercase tracking-wide md:text-xl">
                   {e.school}
                 </div>
@@ -86,6 +91,7 @@ export default function CredentialsPage() {
                 {e.note && (
                   <div className="mt-1.5 text-[12px] text-ink/45">{e.note}</div>
                 )}
+                </div>
               </div>
             </div>
           ))}
