@@ -17,6 +17,7 @@ export type Project = {
   featured?: boolean;
   sample?: boolean;
   privateSource?: boolean;
+  playable?: boolean;
 };
 
 export const projects: Project[] = [
@@ -134,5 +135,23 @@ export const projects: Project[] = [
       "the grid-paper portfolio you are reading. black, white, and a lot of springs.",
     tech: ["typescript", "react", "next.js", "tailwind css", "motion"],
     href: "https://github.com/VillAlfonso/.landing",
+  },
+  {
+    slug: "discrete-math-instincts",
+    title: "Discrete Math Instincts",
+    year: "2024",
+    description: "a falling-expression logic game originally built with C# and Windows Forms. read the truth values, answer true or false, and protect your three hearts. now playable in the browser with the original layout and sprites.",
+    tech: ["c#", ".net framework", "windows forms", "javascript", "html", "css"],
+    href: "https://github.com/VillAlfonso/.landing/tree/master/public/games/discrete-math-instincts",
+    playable: true,
+  },
+  {
+    slug: "quantumnquandary",
+    title: "quantumnquandary",
+    year: "2023",
+    description: "a C# console duel about charging, defending, and reading your opponent. six actions, single-player and local two-player modes, and hand-built ASCII battle animations. the browser recreation reuses the original artwork.",
+    tech: ["c#", "console application", "ascii animation", "javascript", "html", "css"],
+    href: "https://github.com/VillAlfonso/.landing/tree/master/public/games/quantumnquandary",
+    playable: true,
   },
 ];

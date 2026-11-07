@@ -13,6 +13,30 @@ export type ProjectDetail = {
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  "discrete-math-instincts": {
+    category: "game development · propositional logic",
+    purpose: "Turn truth tables into a quick reaction game: read the variable assignments, evaluate the falling expression, and answer before it reaches the bottom.",
+    features: [
+      { title: "Logic under pressure", body: "Evaluate negation, AND, OR, implication, and biconditional expressions. The closest expression is highlighted blue, with keyboard and on-screen answer controls." },
+      { title: "Three hearts, growing difficulty", body: "Extra lanes unlock at 8 and 20 points. A seven-answer streak restores a heart or adds a bonus point, while Advanced mode changes truth values at ten-point milestones." },
+      { title: "The original desktop layout", body: "The browser edition keeps the 540 × 627 Windows Forms playfield, button positions, fonts where available, and original pixel-heart artwork. High scores are saved locally." },
+    ],
+    workflow: ["Choose Normal or Advanced and press START.", "Read p, q, r, and s at the top.", "Answer the blue expression with A / D or True / False.", "Build a streak, survive new lanes, and beat your high score."],
+    implementation: "The original is a C# .NET Framework Windows Forms application. This JavaScript recreation uses the Designer coordinates and original image assets. Its pure truth evaluator handles negation and both implication directions correctly, with separate state for scoring, timers, and replay.",
+    scope: "A playable browser recreation, not an embedded Windows executable. The original answer-evaluation, repeated streak rewards, timer resets, and Advanced-mode milestone behavior were repaired. Browser font rendering and window chrome differ by device. Scores stay on this device; no account is required.",
+  },
+  quantumnquandary: {
+    category: "game development · console strategy",
+    purpose: "Expand rock-paper-scissors into a duel where resource management matters: save charges, predict an attack, or spend them on a decisive counter.",
+    features: [
+      { title: "Six competing actions", body: "Charge and Surrender cost nothing. Gun costs two, Mirror three, Kamehameha five, and Nuclear Bomb eight. Both players lock in before the round is revealed." },
+      { title: "Solo or same-device duels", body: "Play against a computer choosing from its affordable actions, or challenge a second player on one keyboard. Touch buttons provide the same actions." },
+      { title: "Original ASCII animation", body: "The title artwork, battle frames, and team credits come directly from the original C# source. The browser edition animates those frames in a fixed console-style playfield." },
+    ],
+    workflow: ["Choose single player or player vs player.", "Start with two charges and lock in an affordable action.", "Watch both moves resolve through the original ASCII frames.", "Continue until one action wins, then replay or return to the menu."],
+    implementation: "Originally a C# console project, Final-Project-ITEC-102 (2023). Quert Alfonso M. Villafuerte is credited for player-vs-player, game mechanics, front-end game creation, and animation; Riz Ivan G. Verana for menus; Angelo S. Averion for single-player and menu design. The browser port separates the action rules, state machine, and extracted artwork.",
+    scope: "A browser recreation using the original visual assets and documented rules, with valid charge deductions and consistent counters. It includes same-device multiplayer, not online matchmaking. The GitHub button links to this public browser edition; original team credits remain in-game. Browser fonts and timing may differ from the Windows console.",
+  },
   aaaflow: {
     category: "local AI · video production",
     purpose: "Bring the steps of making a narrated video into one workspace: script, voice, visuals, editing, preview, and export. The timeline follows the actual narration so scenes stay aligned with what is being said.",

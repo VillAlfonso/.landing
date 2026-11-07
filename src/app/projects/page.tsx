@@ -5,6 +5,7 @@ import SectionHeader from "@/components/SectionHeader";
 import ProjectRow from "@/components/ProjectRow";
 import Scribble from "@/components/Scribble";
 import { projects } from "@/data/projects";
+import Toolbox from "@/components/Toolbox";
 
 export const metadata: Metadata = {
   title: "projects — Quert Alfonso M. Villafuerte",
@@ -33,6 +34,7 @@ export default function ProjectsPage() {
           <div className="border-t border-ink/10" />
         </div>
       </Reveal>
+      <Toolbox />
     </div>
   );
 }

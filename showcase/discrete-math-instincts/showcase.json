@@ -1,0 +1,79 @@
+{
+  "slug": "discrete-math-instincts",
+  "name": "Discrete Math Instincts",
+  "tagline": "game development · propositional logic",
+  "summary": "a falling-expression logic game originally built with C# and Windows Forms. read the truth values, answer true or false, and protect your three hearts. now playable in the browser with the original layout and sprites.",
+  "problem": "Turn truth tables into a quick reaction game: read the variable assignments, evaluate the falling expression, and answer before it reaches the bottom.",
+  "status": "shipped",
+  "year": 2024,
+  "featured": false,
+  "tech": [
+    "c#",
+    ".net framework",
+    "windows forms",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "topics": [
+    "game development",
+    "browser recreation"
+  ],
+  "highlights": [
+    "Logic under pressure: Evaluate negation, AND, OR, implication, and biconditional expressions. The closest expression is highlighted blue, with keyboard and on-screen answer controls.",
+    "Three hearts, growing difficulty: Extra lanes unlock at 8 and 20 points. A seven-answer streak restores a heart or adds a bonus point, while Advanced mode changes truth values at ten-point milestones.",
+    "The original desktop layout: The browser edition keeps the 540 × 627 Windows Forms playfield, button positions, fonts where available, and original pixel-heart artwork. High scores are saved locally."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "Play in browser",
+      "url": "/games/discrete-math-instincts/index.html",
+      "kind": "demo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/discrete-math-instincts",
+      "kind": "other"
+    },
+    {
+      "label": "Browser source on GitHub",
+      "url": "https://github.com/VillAlfonso/.landing/tree/master/public/games/discrete-math-instincts",
+      "kind": "repo"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-menu.png",
+      "caption": "Start screen with Normal and Advanced modes in the original Windows Forms layout.",
+      "role": "shot"
+    },
+    {
+      "type": "image",
+      "src": "media/02-playing.png",
+      "caption": "Three expression lanes unlocked, with truth assignments, blue target, streak meter, and original heart sprites.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "media/03-game-over.png",
+      "caption": "Game-over panel with the locally saved high score and replay controls.",
+      "role": "shot"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Choose Normal or Advanced and press START.\n- Read p, q, r, and s at the top.\n- Answer the blue expression with A / D or True / False.\n- Build a streak, survive new lanes, and beat your high score."
+    },
+    {
+      "heading": "Under the hood & original credits",
+      "body": "The original is a C# .NET Framework Windows Forms application. This JavaScript recreation uses the Designer coordinates and original image assets. Its pure truth evaluator handles negation and both implication directions correctly, with separate state for scoring, timers, and replay."
+    },
+    {
+      "heading": "Scope & browser adaptations",
+      "body": "A playable browser recreation, not an embedded Windows executable. The original answer-evaluation, repeated streak rewards, timer resets, and Advanced-mode milestone behavior were repaired. Browser font rendering and window chrome differ by device. Scores stay on this device; no account is required."
+    }
+  ]
+}

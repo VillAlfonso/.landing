@@ -160,6 +160,26 @@
       "role": "hero"
     }
   ],
+  "discrete-math-instincts": [
+    {
+      "type": "image",
+      "src": "/showcase/media/discrete-math-instincts/01-menu.png",
+      "caption": "Start screen with Normal and Advanced modes in the original Windows Forms layout.",
+      "role": "shot"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/discrete-math-instincts/02-playing.png",
+      "caption": "Three expression lanes unlocked, with truth assignments, blue target, streak meter, and original heart sprites.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/discrete-math-instincts/03-game-over.png",
+      "caption": "Game-over panel with the locally saved high score and replay controls.",
+      "role": "shot"
+    }
+  ],
   "prosody": [
     {
       "type": "image",
@@ -171,6 +191,26 @@
       "type": "image",
       "src": "/showcase/media/prosody/02-tone-editor.png",
       "caption": "Tone Editor before synthesis, showing the pitch, loudness, and pacing editing workflow.",
+      "role": "shot"
+    }
+  ],
+  "quantumnquandary": [
+    {
+      "type": "image",
+      "src": "/showcase/media/quantumnquandary/01-menu.png",
+      "caption": "Original ASCII title artwork and menu in the playable browser recreation.",
+      "role": "shot"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/quantumnquandary/02-duel.png",
+      "caption": "Local two-player duel with the original ASCII arena, action keys, and charge bars.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/quantumnquandary/03-result.png",
+      "caption": "A resolved Gun-versus-Charge round, with the winning player announced.",
       "role": "shot"
     }
   ],

@@ -48,7 +48,7 @@ Last updated: November 7, 2026. This is a project summary, not a verbatim chat e
 - `scripts/showcase-kit/`: vendored build/probe scripts, schema, notebook template, and provenance README.
 - `showcase/<slug>/showcase.json`: schema-valid entries, captions, links, sections, and media references.
 - New source captures are in `showcase/<slug>/media/`; existing AAAFlow assets are referenced from `public/showcase/media/aaaflow/` to avoid duplicating its videos.
-- Run `python scripts/build_showcases.py` after changing entries or captures. It builds the 11-project showcase and `src/data/showcaseMedia.json`, which the Next.js gallery and thumbnails consume.
+- Run `python scripts/build_showcases.py` after changing entries or captures. It builds the 13-project showcase and `src/data/showcaseMedia.json`, which the Next.js gallery and thumbnails consume.
 - Generated HTML, manifest, and public media are committed. Vercel only needs the usual Next.js build; Python is not required on Vercel.
 - Preserve `/showcase/index.html#/p/<slug>` compatibility and its back links to `/projects/<slug>`.
 
@@ -66,7 +66,34 @@ Last updated: November 7, 2026. This is a project summary, not a verbatim chat e
 ## Verification and continuation
 
 - Run `npm run build` and `git diff --check`.
-- Check desktop and 390px mobile in both themes, screenshot layout, image enlargement and Escape/focus behavior, videos, GitHub/back links, and all 11 generated showcase routes.
+- Check desktop and 390px mobile in both themes, screenshot layout, image enlargement and Escape/focus behavior, videos, GitHub/back links, and all 13 generated showcase routes.
 - `.playwright-mcp/` is ignored and contains temporary clones, local environments, probes, screenshots, and review scripts. Do not commit that directory.
 - A new account should open this checkout (or clone the GitHub repository), read this file and `AGENTS.md`, inspect `git status` / recent commits, and verify the live deployment before continuing.
 - This handoff is not a transfer of the original conversation or hidden model state. Keep any full chat export privately, outside the public repository.
+
+
+## Playable games (November 7, 2026)
+
+- Both games have distinct homepage cards, Projects rows, project detail pages,
+  real screenshot galleries, full showcase-kit entries, GitHub links, and
+  opt-in embedded play surfaces. AAAFlow remains the featured project.
+- `quantumnquandary` is the user's required portfolio spelling. Original source
+  is `VillAlfonso/Final-Project-ITEC-102` (2023). The C# ASCII art and team credits
+  are preserved; single-player and local two-player modes work in JavaScript.
+- `discrete-math-instincts` comes from `C:/asds`, which the user confirmed is
+  its codebase (2024 file dates). Preserve the requested title Discrete Math
+  Instincts, original Designer layout and heart assets. The browser port repairs
+  answer evaluation, streak repetition, timer resets, and Advanced milestones.
+- `public/games/README.md` documents provenance and adaptation details.
+- Browser ports live under `public/games/`, with testable pure rule modules.
+  No native binaries, user high scores, private credential files, or original
+  source-tree build outputs were added to the public site.
+- New game source buttons link to the public browser editions in `.landing`.
+  The original private console repository was not changed to public in this step.
+- `src/components/GameProjects.tsx`, `PlayableGame.tsx`, and `Toolbox.tsx` supply
+  homepage cards, inline play, and a shared technology list on Projects and
+  Credentials. Project technologies include C#, .NET Framework, Windows Forms,
+  console applications, ASCII animation, HTML/CSS, and JavaScript.
+- Validation: production build, five rule tests (all 36 combat pairs and truth
+  tables), browser scoring/lives/unlocks/pause/replay/combat checks, and both game
+  project pages plus home/toolbox in desktop/mobile and light/dark themes.

@@ -1,0 +1,79 @@
+{
+  "slug": "quantumnquandary",
+  "name": "quantumnquandary",
+  "tagline": "game development · console strategy",
+  "summary": "a C# console duel about charging, defending, and reading your opponent. six actions, single-player and local two-player modes, and hand-built ASCII battle animations. the browser recreation reuses the original artwork.",
+  "problem": "Expand rock-paper-scissors into a duel where resource management matters: save charges, predict an attack, or spend them on a decisive counter.",
+  "status": "shipped",
+  "year": 2023,
+  "featured": false,
+  "tech": [
+    "c#",
+    "console application",
+    "ascii animation",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "topics": [
+    "game development",
+    "browser recreation"
+  ],
+  "highlights": [
+    "Six competing actions: Charge and Surrender cost nothing. Gun costs two, Mirror three, Kamehameha five, and Nuclear Bomb eight. Both players lock in before the round is revealed.",
+    "Solo or same-device duels: Play against a computer choosing from its affordable actions, or challenge a second player on one keyboard. Touch buttons provide the same actions.",
+    "Original ASCII animation: The title artwork, battle frames, and team credits come directly from the original C# source. The browser edition animates those frames in a fixed console-style playfield."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "Play in browser",
+      "url": "/games/quantumnquandary/index.html",
+      "kind": "demo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/quantumnquandary",
+      "kind": "other"
+    },
+    {
+      "label": "Browser source on GitHub",
+      "url": "https://github.com/VillAlfonso/.landing/tree/master/public/games/quantumnquandary",
+      "kind": "repo"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-menu.png",
+      "caption": "Original ASCII title artwork and menu in the playable browser recreation.",
+      "role": "shot"
+    },
+    {
+      "type": "image",
+      "src": "media/02-duel.png",
+      "caption": "Local two-player duel with the original ASCII arena, action keys, and charge bars.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "media/03-result.png",
+      "caption": "A resolved Gun-versus-Charge round, with the winning player announced.",
+      "role": "shot"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Choose single player or player vs player.\n- Start with two charges and lock in an affordable action.\n- Watch both moves resolve through the original ASCII frames.\n- Continue until one action wins, then replay or return to the menu."
+    },
+    {
+      "heading": "Under the hood & original credits",
+      "body": "Originally a C# console project, Final-Project-ITEC-102 (2023). Quert Alfonso M. Villafuerte is credited for player-vs-player, game mechanics, front-end game creation, and animation; Riz Ivan G. Verana for menus; Angelo S. Averion for single-player and menu design. The browser port separates the action rules, state machine, and extracted artwork."
+    },
+    {
+      "heading": "Scope & browser adaptations",
+      "body": "A browser recreation using the original visual assets and documented rules, with valid charge deductions and consistent counters. It includes same-device multiplayer, not online matchmaking. The GitHub button links to this public browser edition; original team credits remain in-game. Browser fonts and timing may differ from the Windows console."
+    }
+  ]
+}

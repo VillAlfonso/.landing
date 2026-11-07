@@ -7,6 +7,7 @@ import { projects } from "@/data/projects";
 import { projectDetails } from "@/data/projectDetails";
 import ProjectGallery, { type ShowcaseMedia } from "@/components/ProjectGallery";
 import showcaseMedia from "@/data/showcaseMedia.json";
+import PlayableGame from "@/components/PlayableGame";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -37,11 +38,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <p className="mt-6 max-w-3xl text-sm leading-7 text-ink/70">{project.description}</p>
         <div className="mt-6 flex flex-wrap gap-2">{project.tech.map((t) => <TechChip key={t} id={t} />)}</div>
         <div className="mt-8 flex flex-wrap gap-3">
+          {project.playable && <a href="#play" className="rounded border border-ink/25 px-4 py-3 text-[12px] hover:bg-ink/5">▶ play in browser</a>}
           {source && <a href={source} target="_blank" rel="noopener noreferrer" className="rounded border border-ink/25 px-4 py-3 text-[12px] hover:bg-ink/5">source on GitHub ↗</a>}
           <a href={`/showcase/index.html#/p/${slug}`} className="rounded border border-ink/25 px-4 py-3 text-[12px] hover:bg-ink/5">full media showcase →</a>
         </div>
       </Reveal>
 
+      {project.playable && <PlayableGame slug={slug} title={project.title} />}
       {media.length > 0 && <ProjectGallery media={media} title={project.title} />}
 
       <Reveal className="mt-16 grid gap-6 border-t border-ink/15 pt-8 md:grid-cols-[220px_1fr]">

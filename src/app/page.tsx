@@ -6,6 +6,7 @@ import FeaturedProject from "@/components/FeaturedProject";
 import { SquiggleUnderline } from "@/components/doodles";
 import { profile } from "@/data/profile";
 import { achievements } from "@/data/credentials";
+import GameProjects from "@/components/GameProjects";
 
 export default function Home() {
 
@@ -52,6 +53,7 @@ export default function Home() {
         </Reveal>
       </section>
 
+      <GameProjects />
       <section className="relative z-10 mx-auto mt-24 w-full max-w-6xl px-5 md:px-10">
         <Reveal className="relative">
           <p className="-rotate-1 font-hand text-xl text-ink/50">

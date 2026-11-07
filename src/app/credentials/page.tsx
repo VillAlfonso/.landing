@@ -3,12 +3,9 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 import Scribble from "@/components/Scribble";
-import StackIcon from "@/components/StackIcon";
+import Toolbox from "@/components/Toolbox";
 import { ShieldDoodle } from "@/components/doodles";
 import { education, badges, achievements } from "@/data/credentials";
-import { profile } from "@/data/profile";
-import { stack } from "@/data/stack";
-import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "credentials — Quert Alfonso M. Villafuerte",
@@ -28,11 +25,6 @@ function SubHeader({ title, note }: { title: string; note?: string }) {
 }
 
 export default function CredentialsPage() {
-  // toolbox = the declared stack + anything a project used that isn't in it yet
-  const extraTech = Array.from(new Set(projects.flatMap((p) => p.tech))).filter(
-    (t) => !stack.some((s) => s.id === t)
-  );
-
   return (
     <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pt-24 md:px-10 md:pt-28">
       <Scribble className="right-[8%] top-[120px] hidden -rotate-3 text-lg opacity-[0.09] lg:block">
@@ -149,29 +141,7 @@ export default function CredentialsPage() {
         </div>
       </Reveal>
 
-      <Reveal className="mt-20">
-        <SubHeader title="toolbox" note="auto-updates as projects land" />
-        <p className="mt-5 max-w-3xl text-[13px] leading-relaxed text-ink/65">{profile.experiments}</p>
-        <div className="mt-6 flex flex-wrap gap-2">
-          {stack.map((s) => (
-            <span
-              key={s.id}
-              className="inline-flex items-center gap-2 rounded-[5px] border border-ink/20 px-3 py-2 text-[12px] lowercase text-ink/75"
-            >
-              <StackIcon id={s.id} className="h-4 w-4" />
-              {s.name.toLowerCase()}
-            </span>
-          ))}
-          {extraTech.map((t) => (
-            <span
-              key={t}
-              className="inline-flex items-center gap-2 rounded-[5px] border border-ink/20 px-3 py-2 text-[12px] lowercase text-ink/75"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-      </Reveal>
+      <Toolbox />
     </div>
   );
 }
