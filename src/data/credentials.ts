@@ -25,6 +25,8 @@ export const achievements = [
     date: "October 31, 2026",
     summary: "National Certificate II in computer systems installation and configuration, network and server setup, and systems and network maintenance.",
     note: "Valid until October 30, 2031",
+    preview: "/certificates/computer-systems-servicing-nc-ii.png",
+    pdf: "/certificates/computer-systems-servicing-nc-ii.pdf",
   },
   {
     title: "15th IT Skills Olympics",
@@ -32,6 +34,8 @@ export const achievements = [
     date: "November 4, 2026",
     summary: "Represented LSPU San Pablo in the Python Programming category. Certificate of Participation.",
     note: "School representative · Python Programming",
+    preview: "/certificates/it-skills-olympics.png",
+    pdf: "/certificates/it-skills-olympics.pdf",
   },
 ];
 

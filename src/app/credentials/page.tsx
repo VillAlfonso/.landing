@@ -47,6 +47,25 @@ export default function CredentialsPage() {
         <div className="mt-5 grid gap-5 md:grid-cols-2">
           {achievements.map((item) => (
             <article key={item.title} className="rounded-lg border border-ink/15 p-6">
+              <a
+                href={item.pdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${item.title} redacted PDF (new tab)`}
+                className="group mb-5 block rounded-md border border-ink/15 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.preview}
+                  alt={`${item.title} certificate preview, sensitive details redacted`}
+                  loading="lazy"
+                  className="h-64 w-full rounded-t-md bg-white object-contain p-3"
+                />
+                <span className="flex items-center justify-between gap-2 border-t border-ink/15 px-3 py-3 text-[11px] group-hover:underline">
+                  <span>open certificate PDF ↗</span>
+                  <span className="text-ink/50">redacted copy</span>
+                </span>
+              </a>
               <p className="text-[11px] text-ink/45">{item.date} · {item.issuer}</p>
               <h3 className="mt-3 font-display text-xl uppercase tracking-wide">{item.title}</h3>
               <p className="mt-3 text-[13px] leading-relaxed text-ink/70">{item.summary}</p>
