@@ -62,7 +62,7 @@ export const projects: Project[] = [
     description:
       "a git-aware project archiver that separates code, re-downloadable dependencies, and irreplaceable local files. bundles history, preserves uncommitted work, and verifies backups with SHA-256 manifests. python standard library, with a web UI and MCP tools.",
     tech: ["python", "git", "sha-256", "mcp"],
-    privateSource: true,
+    href: "https://github.com/VillAlfonso/ark",
     featured: true,
   },
   {
@@ -72,8 +72,7 @@ export const projects: Project[] = [
     description:
       "a reusable kit for turning codebases into portfolio case studies. repository probes, browser captures, structured project data, and a static-site builder bring the work together. the aaaflow showcase on this site was built with it.",
     tech: ["python", "playwright", "html", "json schema"],
-    href: "/showcase/index.html#/p/aaaflow",
-    privateSource: true,
+    href: "https://github.com/VillAlfonso/showcase-kit",
   },
   {
     slug: "prosody",
@@ -100,7 +99,7 @@ export const projects: Project[] = [
     description:
       "a windows desktop experiment for user-triggered region capture and AI-assisted editor input. separates the background app from a status monitor, with pause, cancellation, and offline rehearsal controls. screenshots are submitted only on an explicit action.",
     tech: ["python", "windows", "desktop automation", "vision APIs"],
-    privateSource: true,
+    href: "https://github.com/VillAlfonso/Capture",
   },
   {
     slug: "aaadatagatherer",
@@ -127,7 +126,7 @@ export const projects: Project[] = [
     description:
       "a script-to-video editor built around a black canvas, sourced images and GIFs, word-synced captions, and narration. edit each scene, optionally convert the voice locally with RVC, then render an MP4 through remotion.",
     tech: ["remotion", "python", "edge-tts", "rvc", "video editing"],
-    privateSource: true,
+    href: "https://github.com/VillAlfonso/Reanimen",
   },
   {
     slug: "this-site",
