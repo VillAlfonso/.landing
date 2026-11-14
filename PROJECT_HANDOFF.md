@@ -97,3 +97,16 @@ Last updated: November 7, 2026. This is a project summary, not a verbatim chat e
 - Validation: production build, five rule tests (all 36 combat pairs and truth
   tables), browser scoring/lives/unlocks/pause/replay/combat checks, and both game
   project pages plus home/toolbox in desktop/mobile and light/dark themes.
+
+## Alafuenca Hotel (November 14, 2026)
+
+- Repository transfer verified: `VillAlfonso/Alafuenca`; the old URL redirects.
+- Added `/projects/alafuenca`, a Projects row with a real homepage thumbnail,
+  and a full showcase-kit entry with three expandable original-interface captures.
+- This is a PHP/MySQL demo hotel with Stripe integration. Capture ran only the
+  public homepage locally; database, OAuth, email, and payments were not exercised.
+- Added official PHP, MySQL, Stripe, and Bootstrap icons; both toolboxes now have
+  54 technologies. AAAFlow remains the featured project.
+- Build and four desktop/mobile/light/dark combinations passed, including image
+  enlargement, Escape dismissal, source/back links, and icon coverage.
+- There are now 14 project routes and showcase entries.

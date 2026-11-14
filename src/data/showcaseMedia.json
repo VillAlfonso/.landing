@@ -138,6 +138,26 @@
       "role": "shot"
     }
   ],
+  "alafuenca": [
+    {
+      "type": "image",
+      "src": "/showcase/media/alafuenca/01-home.png",
+      "caption": "Original PHP homepage running locally: hotel photography, navigation, and the booking entry point. Demo hotel content.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/alafuenca/02-suites.png",
+      "caption": "Original homepage suite cards with demo room descriptions and nightly prices.",
+      "role": "shot"
+    },
+    {
+      "type": "image",
+      "src": "/showcase/media/alafuenca/03-events.png",
+      "caption": "Original homepage event spaces for weddings and corporate retreats. Demo hotel content.",
+      "role": "shot"
+    }
+  ],
   "ark": [
     {
       "type": "image",

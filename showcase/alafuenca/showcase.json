@@ -1,0 +1,78 @@
+{
+  "slug": "alafuenca",
+  "name": "Alafuenca Hotel",
+  "tagline": "web development · hotel booking demo",
+  "summary": "a demo hotel website built with PHP and MySQL: room and event browsing, guest accounts, booking records, and Stripe payment integration with an admin approval workflow.",
+  "problem": "Bring hotel discovery and reservations into one website, from browsing rooms and event spaces to submitting a booking for staff review.",
+  "status": "experiment",
+  "year": 2025,
+  "featured": false,
+  "tech": [
+    "php",
+    "mysql",
+    "stripe",
+    "javascript",
+    "bootstrap",
+    "tailwind css"
+  ],
+  "topics": [
+    "web development",
+    "hotel booking",
+    "payment integration"
+  ],
+  "highlights": [
+    "Hotel discovery: A photographic landing page introduces suites, dining, amenities, and event spaces. Room listings are backed by MySQL and grouped by room type.",
+    "Reservation workflow: Booking handlers calculate room-night totals and a 75% down payment, generate booking codes, and store pending reservations for review.",
+    "Stripe integration: The PHP backend creates PaymentIntents with manual capture. Admin handlers include confirmation, capture, and cancellation paths tied to booking status.",
+    "Guest and staff views: The code includes session-based accounts, a Google sign-in integration, and administration pages for rooms, events, users, and orders."
+  ],
+  "metrics": [],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/VillAlfonso/Alafuenca",
+      "kind": "repo"
+    },
+    {
+      "label": "Project overview",
+      "url": "/projects/alafuenca",
+      "kind": "other"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "src": "media/01-home.png",
+      "caption": "Original PHP homepage running locally: hotel photography, navigation, and the booking entry point. Demo hotel content.",
+      "role": "hero"
+    },
+    {
+      "type": "image",
+      "src": "media/02-suites.png",
+      "caption": "Original homepage suite cards with demo room descriptions and nightly prices.",
+      "role": "shot"
+    },
+    {
+      "type": "image",
+      "src": "media/03-events.png",
+      "caption": "Original homepage event spaces for weddings and corporate retreats. Demo hotel content.",
+      "role": "shot"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The workflow",
+      "body": "- Browse the hotel, room types, and event spaces.\n- Sign in and choose reservation dates.\n- Submit the booking through the demo payment flow.\n- Review the pending reservation from the administration screens."
+    },
+    {
+      "heading": "Under the hood",
+      "body": "Server-rendered PHP pages use MySQL through PDO and MySQLi. Composer dependencies include the Stripe PHP SDK, Google API client, and PHPMailer. Bootstrap, Tailwind CSS, JavaScript, Swiper, and AOS support the interface."
+    },
+    {
+      "heading": "Scope & current state",
+      "body": "A demo hotel project, not a live reservation service. Screenshots show the original public-facing pages running locally. Database-backed bookings, Google sign-in, payment capture, and email delivery require separate configuration and were not exercised for this showcase."
+    }
+  ],
+  "generated_at": "2026-11-14",
+  "generated_by": "showcase-kit + portfolio curation"
+}

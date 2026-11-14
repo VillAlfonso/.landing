@@ -13,6 +13,37 @@ export type ProjectDetail = {
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  alafuenca: {
+    "category": "web development · hotel booking demo",
+    "purpose": "Bring hotel discovery and reservations into one website, from browsing rooms and event spaces to submitting a booking for staff review.",
+    "features": [
+      {
+        "title": "Hotel discovery",
+        "body": "A photographic landing page introduces suites, dining, amenities, and event spaces. Room listings are backed by MySQL and grouped by room type."
+      },
+      {
+        "title": "Reservation workflow",
+        "body": "Booking handlers calculate room-night totals and a 75% down payment, generate booking codes, and store pending reservations for review."
+      },
+      {
+        "title": "Stripe integration",
+        "body": "The PHP backend creates PaymentIntents with manual capture. Admin handlers include confirmation, capture, and cancellation paths tied to booking status."
+      },
+      {
+        "title": "Guest and staff views",
+        "body": "The code includes session-based accounts, a Google sign-in integration, and administration pages for rooms, events, users, and orders."
+      }
+    ],
+    "workflow": [
+      "Browse the hotel, room types, and event spaces.",
+      "Sign in and choose reservation dates.",
+      "Submit the booking through the demo payment flow.",
+      "Review the pending reservation from the administration screens."
+    ],
+    "implementation": "Server-rendered PHP pages use MySQL through PDO and MySQLi. Composer dependencies include the Stripe PHP SDK, Google API client, and PHPMailer. Bootstrap, Tailwind CSS, JavaScript, Swiper, and AOS support the interface.",
+    "scope": "A demo hotel project, not a live reservation service. Screenshots show the original public-facing pages running locally. Database-backed bookings, Google sign-in, payment capture, and email delivery require separate configuration and were not exercised for this showcase.",
+    "source": "https://github.com/VillAlfonso/Alafuenca"
+  },
   "discrete-math-instincts": {
     category: "game development · propositional logic",
     purpose: "Turn truth tables into a quick reaction game: read the variable assignments, evaluate the falling expression, and answer before it reaches the bottom.",

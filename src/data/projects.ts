@@ -137,6 +137,21 @@ export const projects: Project[] = [
     href: "https://github.com/VillAlfonso/.landing",
   },
   {
+    "slug": "alafuenca",
+    "title": "Alafuenca Hotel",
+    "year": "2025",
+    "description": "a demo hotel website built with PHP and MySQL: room and event browsing, guest accounts, booking records, and Stripe payment integration with an admin approval workflow.",
+    "tech": [
+      "php",
+      "mysql",
+      "stripe",
+      "javascript",
+      "bootstrap",
+      "tailwind css"
+    ],
+    "href": "https://github.com/VillAlfonso/Alafuenca"
+  },
+  {
     slug: "discrete-math-instincts",
     title: "Discrete Math Instincts",
     year: "2024",

@@ -1,4 +1,8 @@
 import {
+  siPhp,
+  siMysql,
+  siStripe,
+  siBootstrap,
   siClaude,
   siVite,
   siCapacitor,
@@ -41,6 +45,10 @@ import type { ReactNode } from "react";
  */
 
 export const simpleIconPaths: Record<string, string> = {
+  bootstrap: siBootstrap.path,
+  stripe: siStripe.path,
+  mysql: siMysql.path,
+  php: siPhp.path,
   claude: siClaude.path,
   "vite": siVite.path,
   "capacitor": siCapacitor.path,
@@ -69,6 +77,10 @@ export const simpleIconPaths: Record<string, string> = {
 };
 
 export const iconColors: Record<string, string> = {
+  bootstrap: `#${siBootstrap.hex}`,
+  stripe: `#${siStripe.hex}`,
+  mysql: `#${siMysql.hex}`,
+  php: `#${siPhp.hex}`,
   claude: `#${siClaude.hex}`,
   "vite": `#${siVite.hex}`,
   "capacitor": `#${siCapacitor.hex}`,
