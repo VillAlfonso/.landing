@@ -3,7 +3,7 @@ export const profile = {
   born: 2004,
   tagline: "web apps, local AI & creative tools",
   status: "open to a 400-hour WMAD internship",
-  email: "quertgamer@gmail.com",
+  email: "quertvillafuerte10@gmail.com",
   location: "San Pablo City, Laguna · open to onsite work outside Laguna",
   aboutTitle: "building, experimenting, learning",
   about:
