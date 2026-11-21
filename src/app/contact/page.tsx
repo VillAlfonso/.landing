@@ -3,6 +3,10 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Scribble from "@/components/Scribble";
 import { profile } from "@/data/profile";
+import ContactForm from "@/components/ContactForm";
+import { contactConfigured } from "@/lib/contact";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "contact — Quert Alfonso M. Villafuerte",
@@ -38,6 +42,8 @@ export default function ContactPage() {
           {profile.email}
         </p>
       </Reveal>
+
+      <ContactForm enabled={contactConfigured()} siteKey={process.env.TURNSTILE_SITE_KEY ?? ""} />
 
       {socials.length > 0 && (
         <Reveal className="mt-14 max-w-md">
