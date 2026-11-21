@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 /**
- * The profile doodle as a die-cut sticker taped onto the sheet.
+ * The profile photo as a sticker taped onto the sheet.
  * Deliberately stays paper-white in dark mode — it's a sticker, not a div.
  */
 export default function StickerPortrait({
@@ -17,10 +17,10 @@ export default function StickerPortrait({
       />
       <div className="rounded-[24px] border-[3px] border-[#17150f] bg-white p-2 shadow-[7px_9px_0_rgba(23,21,15,0.13)] dark:shadow-[7px_9px_0_rgba(0,0,0,0.5)]">
         <Image
-          src="/reblobler.png"
-          alt="Quert Alfonso M. Villafuerte — a hand-drawn blob person with a lot of hair"
-          width={636}
-          height={506}
+          src="/quert-portrait.jpg"
+          alt="Portrait of Quert Alfonso M. Villafuerte"
+          width={748}
+          height={748}
           priority
           className="h-auto w-full"
         />
